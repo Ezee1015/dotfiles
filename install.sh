@@ -13,6 +13,40 @@ install_neovim () {
   echo "- Execute: sudo apt install curl xdotool xclip python3 universal-ctags gdb ripgrep lua-language-server"
 }
 
+install_zsh () {
+  while ! command -v zsh &> /dev/null; do
+    echo "Please install zsh before continuing (sudo apt install zsh)..."
+    read
+  done
+
+  echo "- Changing the shell..."
+  chsh -s /bin/zsh
+  if [[ $? -ne 0 ]]; then
+    echo "Error changing the shell, please try manually"
+    exit 1
+  fi
+
+  echo "- Installing Oh-My-Zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  echo "- Installing powerlevel10k..."
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+  echo "- Installing autosuggestions..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+  echo "- Installing syntax highlighting..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+  echo "   - Add this for Oh My Zsh to load (inside ~/.zshrc):"
+  echo "          ZSH_THEME=\"powerlevel10k/powerlevel10k\""
+  echo "          # ..."
+  echo "          plugins=("
+  echo "              # other plugins..."
+  echo "              zsh-autosuggestions"
+  echo "              zsh-syntax-highlighting"
+  echo "          )"
+}
 
 install_feh() {
   while ! command -v feh &> /dev/null; do
@@ -25,4 +59,5 @@ install_feh() {
   echo "- Link created"
 }
 # install_neovim
+# install_zsh
 # install_feh

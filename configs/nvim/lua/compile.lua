@@ -1,0 +1,156 @@
+-- Instrucciones para ejecutar:
+--    exe("[Comando de Terminal a Ejecutar]", 1, 1) --> Se ejecuta el comando en la terminal, imprimiendo el tiempo
+--    exe("[Comando de Terminal a Ejecutar]", 1)    --> Se ejecuta el comando en la terminal
+--    exe("[Comando de Terminal a Ejecutar]")       --> Se ejecuta el Comando como texto
+local function exe (command, vert_term, time)
+  if vert_term ~= nil and vert_term ~= 0 then
+    command = "term "..command
+  else
+  if time ~= nil  and time ~= 0 then
+    command = "time "..command
+  end
+    command = "!"..command
+  end
+
+  vim.api.nvim_command(command)
+end
+
+local Compile = {
+    ['c'] = function()
+        exe("gcc '%' -o '%<' -lm -g -Wall -Wextra")
+    end,
+
+    ['cpp'] = function()
+        exe("g++ '%' -o '%<' -g")
+    end,
+
+    ['java'] = function()
+        if(IsFile("build.xml")) then
+          exe("ant compile")
+        else
+          exe("javac '%'")
+        end
+    end,
+
+    ['rust'] = function()
+        exe("cargo build --manifest-path='%':p:h:h/Cargo.toml")
+    end,
+
+    ['go'] = function()
+        exe("go build '%<'")
+    end,
+
+    ['markdown'] = function()
+        exe("~/github/My_Markdown_CSS/mdToHtml.sh '%'")
+        -- exe("markdown '%' > '%<'.html")
+        -- exe("pandoc '%' -o '%<'.pdf")
+    end
+
+}
+
+local CompileAndRun = {
+    ['c'] = function()
+        Procesar("compilar", 1)
+        exe("'"..vim.fn.expand('%:p:r').."'", 1)
+    end,
+
+    ['cpp'] = function()
+        Procesar("compilar", 1)
+        exe("'"..vim.fn.expand('%:p:r').."'", 1)
+    end,
+
+    ['lua'] = function()
+        vim.cmd "so %"
+    end,
+
+    ['vim'] = function()
+        vim.cmd "so %"
+    end,
+
+    ['rust'] = function()
+        Procesar("compilar", 1)
+        exe("cargo run --manifest-path='%':p:h:h/Cargo.toml", 1)
+    end,
+
+    ['java'] = function()
+        if(IsFile("build.xml")) then
+          exe("ant run",1)
+        else
+          Procesar("compilar", 1)
+          exe("java '%<'", 1)
+        end
+    end,
+
+    ['sh'] = function()
+        exe("bash '%'", 1)
+    end,
+
+    ['python'] = function()
+        exe("python3 '%'", 1)
+    end,
+
+    ['javascript'] = function()
+        exe("node '%'", 1)
+    end,
+
+    ['html'] = function()
+        -- exe("chromium '%' &")
+        -- exe("firefox '%'")
+        -- exe("firefox-esr '%'")
+        exe("open '%'")
+        exe("xdg-open '%'")
+    end,
+
+    ['tex'] = function()
+        exe("pdflatex --output-directory='%':p:h '%'")
+    end,
+
+    ['go'] = function()
+        Procesar("compilar", 1)
+        exe("time go run '%'", 1)
+    end,
+
+    ['text'] = function()
+        exe("echo 'words : ' && wc -w % && echo 'lines : ' && wc -l '%' && echo 'size : ' && du -h '%'")
+    end,
+
+    ['markdown'] = function()
+        vim.cmd("MarkdownPreview")
+    end,
+  }
+
+function Procesar (tipo, guardar)
+  if guardar == nil and vim.fn.getbufinfo('%')[1].changed == 1 then
+    vim.cmd "w"
+  end
+
+  if IsFile("Makefile") and vim.bo.filetype ~= "markdown" then
+    exe("make", 1)
+
+    -- if tipo == "ejecutar" then
+    --   exe("make run", 1)
+    -- end
+    return 0;
+  end
+
+  if tipo == "compilar" then
+    local obj = Compile[vim.bo.filetype]
+    if obj then
+      obj()
+    else
+      print("Todavía no se ha programado la compilación de esta extensión")
+      return 1;
+    end
+  elseif tipo == "ejecutar" then
+    local obj = CompileAndRun[vim.bo.filetype]
+    if obj then
+      obj()
+    else
+      print("Todavía no se ha programado la compilación ni la ejecución de esta extensión")
+      return 1;
+    end
+  else
+    print("Ha ingresado una opcion incorrecta")
+    return 1;
+  end
+end

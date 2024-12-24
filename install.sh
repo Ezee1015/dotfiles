@@ -13,4 +13,16 @@ install_neovim () {
   echo "- Execute: sudo apt install curl xdotool xclip python3 universal-ctags gdb ripgrep lua-language-server"
 }
 
+
+install_feh() {
+  while ! command -v feh &> /dev/null; do
+    echo "Please install feh before continuing (sudo apt install feh)..."
+    read
+  done
+
+  ln -sTf "$REPO_DIR/configs/feh" ~/.config/feh
+
+  echo "- Link created"
+}
 # install_neovim
+# install_feh

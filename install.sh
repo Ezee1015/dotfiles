@@ -14,10 +14,10 @@ install_neovim () {
 }
 
 install_zsh () {
-  while ! command -v zsh &> /dev/null; do
-    echo "Please install zsh before continuing (sudo apt install zsh)..."
-    read
-  done
+  if ! command -v zsh &> /dev/null; then
+    echo "- Installing zsh..."
+    sudo apt install zsh
+  fi
 
   echo "- Changing the shell..."
   chsh -s /bin/zsh
@@ -49,10 +49,10 @@ install_zsh () {
 }
 
 install_feh() {
-  while ! command -v feh &> /dev/null; do
-    echo "Please install feh before continuing (sudo apt install feh)..."
-    read
-  done
+  if ! command -v feh &> /dev/null; then
+    echo "- Installing feh..."
+    sudo apt install feh
+  fi
 
   ln -sTf "$REPO_DIR/configs/feh" ~/.config/feh
 

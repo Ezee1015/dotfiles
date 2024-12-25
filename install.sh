@@ -81,6 +81,16 @@ install_rofi() {
   mkdir -p m4 && autoreconf -i && mkdir -p build && cd build/ && ../configure && make && sudo make install
 }
 
+install_dunst() {
+  if ! command -v dunst &> /dev/null; then
+    echo "- Installing dunst..."
+    sudo apt install dunst
+  fi
+
+  ln -sTf "$REPO_DIR/configs/dunst/" ~/.config/dunst
+  echo "- Link created"
+}
+
 # install_neovim
 # install_zsh
 # install_feh

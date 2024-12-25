@@ -1,0 +1,31 @@
+//@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+@import "/usr/share/rofi/themes/gruvbox-dark.rasi"
+configuration {
+  modi: "run,drun,calc,filebrowser";
+
+  kb-row-up:                      "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+  kb-row-down:                    "Down,Control+j";
+  kb-accept-entry:                "Control+m,Return,KP_Enter";
+  kb-move-front:                  "Home";
+  kb-move-end:                    "End";
+
+  /*terminal:                       "alacritty";*/
+
+  kb-remove-to-eol:               "Alt+Delete";
+  kb-remove-to-sol:               "Alt+BackSpace";
+  kb-remove-word-forward:         "Control+Delete";
+  kb-remove-char-back:            "BackSpace";
+  kb-remove-char-next:            "Delete";
+
+  kb-mode-next:                   "Shift+Right,Control+Tab,Control+l";
+  kb-mode-previous:               "Shift+Left,Control+Shift+Tab,Control+h";
+  kb-mode-complete:               "Shift+Return";
+
+  kb-accept-alt:                  "";
+  kb-row-first:"";
+  kb-row-last:"";
+  show-icons: true;
+  drun-icon-theme: "breeze-dark";
+}
+
+// Keyboard shortcuts: https://davatorium.github.io/rofi/current/rofi-keys.5/

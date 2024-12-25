@@ -58,6 +58,30 @@ install_feh() {
 
   echo "- Link created"
 }
+
+install_rofi() {
+  if ! command -v rofi &> /dev/null; then
+    echo "- Installing rofi..."
+    sudo apt install rofi rofi-dev qalc autoconf libtool
+  fi
+
+  ln -sTf "$REPO_DIR/configs/rofi/" ~/.config/rofi
+  echo "- Link created"
+
+  mkdir -p compiled
+  cd compiled
+
+  echo "- Compiling rofi-calc..."
+  if [[ -d "rofi-calc" ]] ; then
+    cd rofi-calc && git pull
+  else
+    git clone https://github.com/Ezee1015/rofi-calc
+    cd rofi-calc
+  fi
+  mkdir -p m4 && autoreconf -i && mkdir -p build && cd build/ && ../configure && make && sudo make install
+}
+
 # install_neovim
 # install_zsh
 # install_feh
+# install_rofi

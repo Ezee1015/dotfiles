@@ -87,7 +87,7 @@ install_dunst() {
     sudo apt install dunst
   fi
 
-  ln -sTf "$REPO_DIR/configs/dunst/" ~/.config/dunst
+  ln -sTf "$REPO_DIR/configs/dunst" ~/.config/dunst
   echo "- Link created"
 }
 
@@ -172,5 +172,6 @@ install_alacritty() {
 # install_zsh
 # install_feh
 # install_rofi
+# install_dunst
 # install_i3
 # install_alacritty

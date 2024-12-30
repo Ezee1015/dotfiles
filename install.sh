@@ -91,7 +91,56 @@ install_dunst() {
   echo "- Link created"
 }
 
+install_i3() {
+  echo "- Install for i3: sudo apt install i3-wm i3lock numlockx lxappearance pavucontrol lm-sensors thunar breeze-icon-theme scrot xfce4-clipman-plugin perl build-essential acpi network-manager-gnome sqlite3 ffmpeg gvfs gvfs-backends"
+  echo "- For Qt compatibility install: sudo apt install qt5ct qt5-style-plugins"
+  echo -e "\n\n Press enter when ready..."
+  read
+
+  ln -sTf "$REPO_DIR/configs/i3" ~/.config/i3
+
+  # Install scrot
+  echo "- Installing scrot..."
+  sudo cp i3-scrot/i3-scrot /usr/bin/
+
+  # Install i3blocks
+  echo "- Installing i3blocks..."
+  mkdir -p compiled
+  cd compiled
+  if [[ -d "i3blocks" ]] ; then
+    cd i3blocks && git pull
+  else
+    git clone https://github.com/Ezee1015/i3blocks
+    cd i3blocks
+  fi
+  ./autogen.sh && ./configure && make && sudo make install
+  cd ../..
+
+  # Install font
+  echo "- Installing fonts..."
+    # Iosevka
+  if [[ -d /usr/share/fonts/truetype/iosevka ]]; then
+    sudo rm -r /usr/share/fonts/truetype/iosevka
+  fi
+  wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Iosevka.tar.xz -P /tmp/ && sudo mkdir /usr/share/fonts/truetype/iosevka && sudo tar -xf /tmp/Iosevka.tar.xz -C /usr/share/fonts/truetype/iosevka
+    # Hack
+  if [[ -d /usr/share/fonts/truetype/hack ]]; then
+    sudo rm -r /usr/share/fonts/truetype/hack
+  fi
+  wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.tar.xz -P /tmp/ && sudo mkdir /usr/share/fonts/truetype/hack && sudo tar -xf /tmp/Hack.tar.xz -C /usr/share/fonts/truetype/hack
+
+	# Qt theme control is `qt5ct`. Change to qt6ct when using Qt 6
+  if ! grep "QT_QPA_PLATFORMTHEME=qt5ct" /etc/environment ; then
+    echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee -a /etc/environment
+  fi
+
+  echo "- Instalation finished. Is recommended to install: sudo apt install kdeconnect"
+}
+
+}
+
 # install_neovim
 # install_zsh
 # install_feh
 # install_rofi
+# install_i3

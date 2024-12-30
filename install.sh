@@ -137,6 +137,35 @@ install_i3() {
   echo "- Instalation finished. Is recommended to install: sudo apt install kdeconnect"
 }
 
+install_alacritty() {
+  mkdir -p compiled
+  cd compiled
+
+  if [[ -d "alacritty" ]]; then
+    echo "- Updating repo..."
+    cd alacritty
+    git pull
+  else
+    echo "- Cloning the repo..."
+    git clone https://github.com/alacritty/alacritty
+    cd alacritty
+  fi
+
+  if ! command -v rustup &> /dev/null; then
+    echo "- Installing rustup..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    rustup override set stable
+    rustup update stable
+  fi
+
+  echo "- Installing requirements..."
+  sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+
+  echo "- Compiling and installing..."
+  cargo build --release
+  mkdir -p ~/.config/alacritty
+  ln -sTf "$REPO_DIR/configs/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
+  sudo ln -sTf "$REPO_DIR/compiled/alacritty/target/release/alacritty" /usr/local/bin/alacritty
 }
 
 # install_neovim
@@ -144,3 +173,4 @@ install_i3() {
 # install_feh
 # install_rofi
 # install_i3
+# install_alacritty

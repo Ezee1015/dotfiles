@@ -168,6 +168,29 @@ install_alacritty() {
   sudo ln -sTf "$REPO_DIR/compiled/alacritty/target/release/alacritty" /usr/local/bin/alacritty
 }
 
+install_ranger() {
+  if ! command -v ranger &> /dev/null; then
+    echo "- Installing ranger..."
+    sudo apt install ranger exiftool
+  fi
+
+  echo "- Linking configuration..."
+  ln -sTf $REPO_DIR/configs/ranger ~/.config/ranger
+
+  if [[ ! -e ~/.config/ranger/colorschemes/dracula.py ]]; then
+    echo "- Installing colorscheme..."
+    mkdir -p ~/.config/ranger/colorschemes
+    git clone https://github.com/dracula/ranger.git /tmp/dracula
+    mv /tmp/dracula/dracula.py ~/.config/ranger/colorschemes/
+  fi
+
+  if [[ ! -d ~/.config/ranger/plugins/ranger_devicons ]]; then
+    echo "- Installing ranger devicons..."
+    mkdir -p ~/.config/ranger/plugins
+    git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+  fi
+}
+
 install_zathura() {
   if ! command -v zathura &> /dev/null; then
     echo "- Installing zathura..."
@@ -185,4 +208,5 @@ install_zathura() {
 # install_dunst
 # install_i3
 # install_alacritty
+# install_ranger
 # install_zathura

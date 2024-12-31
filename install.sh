@@ -191,6 +191,16 @@ install_ranger() {
   fi
 }
 
+install_mpv() {
+  if ! command -v mpv &> /dev/null; then
+    echo "- Installing mpv..."
+    sudo apt install mpv
+  fi
+
+  echo "- Linking configuration..."
+  ln -sTf $REPO_DIR/configs/mpv ~/.config/mpv
+}
+
 install_zathura() {
   if ! command -v zathura &> /dev/null; then
     echo "- Installing zathura..."
@@ -208,5 +218,6 @@ install_zathura() {
 # install_dunst
 # install_i3
 # install_alacritty
+# install_mpv
 # install_ranger
 # install_zathura

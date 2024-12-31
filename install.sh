@@ -211,6 +211,46 @@ install_zathura() {
   ln -sTf $REPO_DIR/configs/zathura ~/.config/zathura
 }
 
+install_xournalpp() {
+  if [[ -z "$(flatpak list | grep 'com.github.xournalpp.xournalpp')" ]]; then
+    echo "Please install xournal++ before continuing (flatpak install com.github.xournalpp.xournalpp)..."
+    read
+  fi
+
+  # For .deb package
+  # CONFIG_PATH=~/.config/xournalpp
+  # For flatpak package
+  CONFIG_PATH=~/.var/app/com.github.xournalpp.xournalpp/config/xournalpp
+
+  if [[ -d $CONFIG_PATH ]] && [[ ! -L $CONFIG_PATH ]]; then
+    echo "- Do you want to remove Xournal++'s config folder?"
+    echo "  ($CONFIG_PATH)"
+    echo -n "  [s/N] > "
+    read ANS
+    if [[ "$ANS" != "s" ]] && [[ "$ANS" != "S" ]]; then
+      echo "- The configuration was not installed!"
+      exit 0
+    fi
+    echo "- Removing folder..."
+    rm -rf "$CONFIG_PATH"
+  fi
+
+  echo "- Installing configuration..."
+  ln -sTf "$REPO_DIR/configs/xournalpp" "$CONFIG_PATH"
+
+  echo "- Now open xournalpp, close it, and change this file $CONFIG_PATH/settings.xml:"
+  echo '  - Change the page template property to <property name="pageTemplate" value="xoj/template&#10;copyLastPageSize=false&#10;copyLastPageSettings=true&#10;size=595.275591x841.889764&#10;backgroundType=graph&#10;backgroundColor=#241f31&#10;"/>'
+  echo '  - Change the toolbar layout to <property name="selectedToolbar" value="Minimal Top Copy"/>'
+  echo '  - Change the stabilizer to <property name="stabilizerAveragingMethod" value="2"/>'
+  echo '  - Change the stabilizer value to <property name="stabilizerSigma" value="0.9"/>'
+  echo '  - Change the highlight position to <property name="highlightPosition" value="true"/>'
+  echo '  - Change the highlight position radius to <property name="cursorHighlightRadius" value="5"/>'
+  echo '  - Change this property to <property name="emptyLastPageAppend" value="onDrawOfLastPage"/>'
+  echo '  - Change the background color to <property name="backgroundColor" value="4278190080"/>'
+  echo '  - Change the active color to <property name="selectionBorderColor" value="4294901760"/>'
+  echo '  - These are the most important setting. Customize the other options from the interface...'
+}
+
 # install_neovim
 # install_zsh
 # install_feh
@@ -221,3 +261,4 @@ install_zathura() {
 # install_mpv
 # install_ranger
 # install_zathura
+# install_xournalpp

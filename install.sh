@@ -168,6 +168,16 @@ install_alacritty() {
   sudo ln -sTf "$REPO_DIR/compiled/alacritty/target/release/alacritty" /usr/local/bin/alacritty
 }
 
+install_zathura() {
+  if ! command -v zathura &> /dev/null; then
+    echo "- Installing zathura..."
+    sudo apt install zathura
+  fi
+
+  echo "- Linking configuration..."
+  ln -sTf $REPO_DIR/configs/zathura ~/.config/zathura
+}
+
 # install_neovim
 # install_zsh
 # install_feh
@@ -175,3 +185,4 @@ install_alacritty() {
 # install_dunst
 # install_i3
 # install_alacritty
+# install_zathura

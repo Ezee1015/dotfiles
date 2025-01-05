@@ -11,7 +11,7 @@ if [[ $BLOCK_BUTTON -eq 1 ]]; then
     xrandr --output DisplayPort-0 --off --output HDMI-A-0 --mode 1920x1080 --rate 74.97 --pos 0x0
     DP0_DISABLED=off
   else
-    xrandr --output DisplayPort-0 --mode 1440x900 --rate 74.98 --pos 0x0 --output HDMI-A-0 --mode 1920x1080 --rate 74.97 --pos 1440x0
+    xrandr --output DisplayPort-0 --mode 1440x900 --rate 74.98 --pos 0x55 --output HDMI-A-0 --mode 1920x1080 --rate 74.97 --pos 1440x0
     DP0_DISABLED=on
   fi
   ~/.config/i3/myScripts/wallpaper.sh

@@ -64,6 +64,7 @@ bindsym $mod+Shift+d exec rofi -show "drun"
 bindsym $mod+Shift+f exec rofi -show "filebrowser"
 bindsym $mod+Mod2+KP_Subtract exec rofi -show calc -calc-command "echo '{result}' | tr -d '\n' | xclip -selection clipboard"
 bindsym $mod+minus exec rofi -show calc -calc-command "echo '{result}' | tr -d '\n' | xclip -selection clipboard"
+bindsym $mod+o exec --no-startup-id PATH="$PATH:$HOME/.config/i3/rofi-sound" rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"
 
 # change focus
 bindsym $mod+h focus left

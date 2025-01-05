@@ -267,6 +267,7 @@ exec xfce4-clipman
 exec dunst
 exec kdeconnect-indicator
 exec pulseaudio --start
+exec picom --daemon
 # Others
 exec_always ffplay ~/.config/i3/sounds/login.ogg -autoexit -nodisp -loglevel quiet
 

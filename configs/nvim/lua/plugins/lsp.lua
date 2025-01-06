@@ -247,27 +247,6 @@ local function cmp_config ()
   )
 end
 
-local function lsp_zero_config()
-  local lsp_zero = require('lsp-zero')
-
-  lsp_zero.preset('recommended')
-  -- lsp_zero.nvim_workspace()
-
-  local lsp = require('lsp-zero').preset({})
-
-  lsp.on_attach(function(_, bufnr)
-
-    lsp.default_keymaps({
-      buffer = bufnr,
-      -- NO Mapea...
-      -- F2 y F3 porque lo va a ocupar Nvim-tree
-      -- gr y gd porque lo reemplaza con Telescope
-      omit = {'<F2>', '<F3>', 'gr', 'gd'},
-    })
-  end)
-
-  lsp.setup()
-end
 
 return {
 	-- Lsp
@@ -283,17 +262,9 @@ return {
 					"hrsh7th/cmp-nvim-lsp",
 					"hrsh7th/cmp-nvim-lua",
 
-          -- Cerrado automático de paréntesis, llaves, comillas, etc.
-          {"windwp/nvim-autopairs",
-            config = true
-          },
-
           -- Snippets
           {"L3MON4D3/LuaSnip",
             dependencies = {
-              {"VonHeikemen/lsp-zero.nvim",
-                config = lsp_zero_config
-              },
               "rafamadriz/friendly-snippets",
             },
             config = luasnip_config
@@ -318,5 +289,10 @@ return {
     keys = {
       { "<leader>di", "<cmd>lua vim.lsp.buf.hover()<CR>", desc="Información del objeto"}
     }
+  },
+
+  -- Cerrado automático de paréntesis, llaves, comillas, etc.
+  {"windwp/nvim-autopairs",
+    config = true
   }
 }

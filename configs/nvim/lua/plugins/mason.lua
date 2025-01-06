@@ -1,6 +1,3 @@
-local lsp_zero = require('lsp-zero')
-lsp_zero.extend_lspconfig()
-
 -- Instalación de los servidores de lenguaje y DAPs
 return {
   {"williamboman/mason.nvim",

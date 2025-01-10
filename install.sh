@@ -82,6 +82,11 @@ install_rofi() {
     cd rofi-calc
   fi
   mkdir -p m4 && autoreconf -i && mkdir -p build && cd build/ && ../configure && make && sudo make install
+
+  echo "- Downloading rofi-finder..."
+  mkdir -p ~/.local/share/rofi/
+  wget https://raw.githubusercontent.com/Ezee1015/rofi-scripts/refs/heads/master/rofi-finder/finder.sh -P ~/.local/share/rofi/
+  chmod +x ~/.local/share/rofi/finder.sh
 }
 
 install_dunst() {

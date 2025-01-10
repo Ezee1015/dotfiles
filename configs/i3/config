@@ -285,8 +285,6 @@ bindsym $mod+Home exec xbacklight -inc 10 || ~/.config/i3/myScripts/brightnessCo
 bindsym $mod+End  exec xbacklight -dec 10 || ~/.config/i3/myScripts/brightnessControl.sh -dec
 
 # Lock screen
-# set $wallpaperLock Imágenes/FONDOS/Paisajes/wallpaperflare.com_wallpaper\(1\).jpg
-# bindsym $mod+Shift+x exec convert $wallpaperLock -resize $(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/') RGB:- | i3lock --raw $(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'):rgb --image /dev/stdin
 set $lock_screen (scrot - | convert - -blur 0x4 - | composite -gravity southeast ~/.config/i3/images/i3lock-overlay.png - /tmp/lock.png) && i3lock -i /tmp/lock.png
 set $shutdown_music ffplay ~/.config/i3/sounds/logout.ogg -autoexit -nodisp -loglevel quiet
 

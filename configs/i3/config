@@ -52,7 +52,7 @@ bindsym $mod+Shift+q kill
 # Mute/Unmute notifications
 set $notification_change_sound ~/.config/i3/myScripts/notificationSounds.sh
 bindsym $mod+n exec BLOCK_BUTTON=1 ~/.config/i3/i3blocks-plugins/dunst/dunst && $refresh_mute_notifications && $notification_change_sound
-bindsym $mod+m exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/mic_i3.sh && $refresh_mic_notifications
+bindsym $mod+m exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/mic_control.sh && $refresh_mic_notifications
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run

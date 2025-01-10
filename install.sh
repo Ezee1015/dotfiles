@@ -9,6 +9,9 @@ install_neovim () {
   done
   ln -sTf "$REPO_DIR/configs/nvim" ~/.config/nvim
 
+  echo "- Copying .desktop file..."
+  sudo cp desktop-entries/neovim.desktop /usr/share/applications
+
   echo "- Link created"
   echo "- Execute: sudo apt install curl xdotool xclip python3 universal-ctags gdb ripgrep lua-language-server"
 }
@@ -166,6 +169,9 @@ install_alacritty() {
   mkdir -p ~/.config/alacritty
   ln -sTf "$REPO_DIR/configs/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
   sudo ln -sTf "$REPO_DIR/compiled/alacritty/target/release/alacritty" /usr/local/bin/alacritty
+
+  echo "- Copying .desktop file..."
+  sudo cp desktop-entries/Alacritty.desktop /usr/share/applications
 }
 
 install_ranger() {

@@ -1,4 +1,5 @@
 set $mod Mod1
+set $smod Mod4
 
 font pango:hackNerdFont 9
 
@@ -133,31 +134,114 @@ set $workspace6 "6"
 set $workspace7 "7"
 set $workspace8 "8"
 set $workspace9 "9"
-set $workspace10 "10"
+set $workspace10 "Mail"
+set $workspaceS1 "s1"
+set $workspaceS2 "s2"
+set $workspaceS3 "s3"
+set $workspaceS4 "s4"
+set $workspaceS5 "s5"
+set $workspaceS6 "s6"
+set $workspaceS7 "s7"
+set $workspaceS8 "s8"
+set $workspaceS9 "s9"
+set $workspaceS10 "s10"
+
+# asign workspaces to monitor
+set $pm HDMI-A-0
+set $sm DisplayPort-0
+workspace $workspace1 output $pm
+workspace $workspace2 output $pm
+workspace $workspace3 output $pm
+workspace $workspace4 output $pm
+workspace $workspace5 output $pm
+workspace $workspace6 output $pm
+workspace $workspace7 output $pm
+workspace $workspace8 output $pm
+workspace $workspace9 output $pm
+workspace $workspace10 output $pm
+workspace $workspaceS1 output $sm
+workspace $workspaceS2 output $sm
+workspace $workspaceS3 output $sm
+workspace $workspaceS4 output $sm
+workspace $workspaceS5 output $sm
+workspace $workspaceS6 output $sm
+workspace $workspaceS7 output $sm
+workspace $workspaceS8 output $sm
+workspace $workspaceS9 output $sm
+workspace $workspaceS10 output $sm
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
+bindsym $mod+Mod2+KP_1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
+bindsym $mod+Mod2+KP_2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
+bindsym $mod+Mod2+KP_3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
+bindsym $mod+Mod2+KP_4 workspace $workspace4
 bindsym $mod+5 workspace $workspace5
+bindsym $mod+Mod2+KP_5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
+bindsym $mod+Mod2+KP_6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
+bindsym $mod+Mod2+KP_7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
+bindsym $mod+Mod2+KP_8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
+bindsym $mod+Mod2+KP_9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
+bindsym $mod+Mod2+KP_0 workspace $workspace10
+bindsym $smod+1 workspace $workspaceS1
+bindsym $smod+Mod2+KP_1 workspace $workspaceS1
+bindsym $smod+2 workspace $workspaceS2
+bindsym $smod+Mod2+KP_2 workspace $workspaceS2
+bindsym $smod+3 workspace $workspaceS3
+bindsym $smod+Mod2+KP_3 workspace $workspaceS3
+bindsym $smod+4 workspace $workspaceS4
+bindsym $smod+Mod2+KP_4 workspace $workspaceS4
+bindsym $smod+5 workspace $workspaceS5
+bindsym $smod+Mod2+KP_5 workspace $workspaceS5
+bindsym $smod+6 workspace $workspaceS6
+bindsym $smod+Mod2+KP_6 workspace $workspaceS6
+bindsym $smod+7 workspace $workspaceS7
+bindsym $smod+Mod2+KP_7 workspace $workspaceS7
+bindsym $smod+8 workspace $workspaceS8
+bindsym $smod+Mod2+KP_8 workspace $workspaceS8
+bindsym $smod+9 workspace $workspaceS9
+bindsym $smod+Mod2+KP_9 workspace $workspaceS9
+bindsym $smod+0 workspace $workspaceS10
+bindsym $smod+Mod2+KP_0 workspace $workspaceS10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $workspace1
-bindsym $mod+Shift+2 move container to workspace number $workspace2
-bindsym $mod+Shift+3 move container to workspace number $workspace3
-bindsym $mod+Shift+4 move container to workspace number $workspace4
-bindsym $mod+Shift+5 move container to workspace number $workspace5
-bindsym $mod+Shift+6 move container to workspace number $workspace6
-bindsym $mod+Shift+7 move container to workspace number $workspace7
-bindsym $mod+Shift+8 move container to workspace number $workspace8
-bindsym $mod+Shift+9 move container to workspace number $workspace9
-bindsym $mod+Shift+0 move container to workspace number $workspace10
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+bindsym $smod+Shift+1 move container to workspace $workspaceS1
+bindsym $smod+Shift+2 move container to workspace $workspaceS2
+bindsym $smod+Shift+3 move container to workspace $workspaceS3
+bindsym $smod+Shift+4 move container to workspace $workspaceS4
+bindsym $smod+Shift+5 move container to workspace $workspaceS5
+bindsym $smod+Shift+6 move container to workspace $workspaceS6
+bindsym $smod+Shift+7 move container to workspace $workspaceS7
+bindsym $smod+Shift+8 move container to workspace $workspaceS8
+bindsym $smod+Shift+9 move container to workspace $workspaceS9
+bindsym $smod+Shift+0 move container to workspace $workspaceS10
+
+# Enable/Disable second monitor
+bindsym $smod+o exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/monitor.sh && pkill -SIGRTMIN+1 i3blocks
+
+# Move workspaces between monitors
+bindsym $smod+Shift+h move workspace to output left
+bindsym $smod+Shift+l move workspace to output right
+bindsym $smod+Shift+k move workspace to output up
+bindsym $smod+Shift+j move workspace to output down
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

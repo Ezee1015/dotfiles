@@ -5,4 +5,4 @@
 
 # --bg-scale
 # --bg-center
-feh --bg-center ~/Imágenes/Wallpapers/wallpaper
+feh --bg-center ~/Pictures/Wallpapers/wallpaper

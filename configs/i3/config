@@ -318,7 +318,7 @@ bindsym Control+period exec dunstctl context
 bindsym Print exec i3-scrot -d
 bindsym --release Shift+Print exec i3-scrot -s
 bindsym Control+Shift+Print exec i3-scrot -w
-bindsym Control+Print exec thunar ~/Imágenes
+bindsym Control+Print exec thunar ~/Pictures
 
 # Zoom/Magnify
 bindsym --release $mod+z exec ~/.config/i3/myScripts/zoomme.sh

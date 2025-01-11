@@ -341,22 +341,22 @@ bindsym $mod+Shift+b exec ~/github/My_Scripts/sh/search_internet.sh
 
 # Scripts
 exec_always ~/.config/i3/myScripts/wallpaper.sh
-exec ~/apps/autorun.sh
+exec --no-startup-id ~/apps/autorun.sh
 # Services
 # KDE authentication dialog
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 # GNOME authentication dialog
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
-exec setxkbmap es
-exec numlockx on
+exec --no-startup-id setxkbmap es
+exec --no-startup-id numlockx on
+exec --no-startup-id dunst
+exec --no-startup-id pulseaudio --start
+exec --no-startup-id picom --daemon
 exec xfce4-clipman
-exec dunst
 exec kdeconnect-indicator
-exec pulseaudio --start
-exec picom --daemon
 # Others
-exec_always ffplay ~/.config/i3/sounds/login.ogg -autoexit -nodisp -loglevel quiet
+exec_always --no-startup-id ffplay ~/.config/i3/sounds/login.ogg -autoexit -nodisp -loglevel quiet
 
 # Window rules
 assign [class="ffplay"] $workspace4

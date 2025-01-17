@@ -262,6 +262,16 @@ install_xournalpp() {
   echo '  - These are the most important setting. Customize the other options from the interface...'
 }
 
+install_conky() {
+  if ! command -v conky &> /dev/null; then
+    echo "- Installing conky..."
+    sudo apt install conky-all
+  fi
+
+  echo "- Linking configuration..."
+  ln -sTf "$REPO_DIR/configs/conky" ~/.config/conky
+}
+
 # install_neovim
 # install_zsh
 # install_feh
@@ -273,3 +283,4 @@ install_xournalpp() {
 # install_ranger
 # install_zathura
 # install_xournalpp
+# install_conky

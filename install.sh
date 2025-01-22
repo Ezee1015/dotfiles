@@ -272,6 +272,21 @@ install_conky() {
   ln -sTf "$REPO_DIR/configs/conky" ~/.config/conky
 }
 
+install_tmux() {
+  if ! command -v tmux &> /dev/null; then
+    echo "- Installing tmux..."
+    sudo apt install tmux
+  fi
+
+  echo "- Linking configuration..."
+  ln -sTf "$REPO_DIR/configs/tmux/tmux.conf" ~/.tmux.conf
+
+  echo "- Downloading tpm..."
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+  echo "- Remember to press <C-a><S-i> when first opening tmux..."
+}
+
 # install_neovim
 # install_zsh
 # install_feh
@@ -284,3 +299,4 @@ install_conky() {
 # install_zathura
 # install_xournalpp
 # install_conky
+# install_tmux

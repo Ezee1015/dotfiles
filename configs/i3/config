@@ -357,6 +357,7 @@ exec --no-startup-id pulseaudio --start
 exec --no-startup-id picom --daemon
 exec xfce4-clipman
 exec kdeconnect-indicator
+exec corectrl --minimize-systray
 exec conky -c ~/.config/conky/conky.conf
 # Others
 exec_always --no-startup-id ffplay ~/.config/i3/sounds/login.ogg -autoexit -nodisp -loglevel quiet

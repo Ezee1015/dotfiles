@@ -329,7 +329,8 @@ bindsym --release $mod+z exec ~/.config/i3/myScripts/zoomme.sh
 bindsym --release $mod+Shift+z exec ~/.config/i3/myScripts/zoomme.sh -c
 
 # Wakit
-bindsym --release $mod+Shift+w exec cd ~/github/wakit/wakit && ./wakit
+bindsym --release $mod+Shift+x exec --no-startup-id ~/github/wakit/wakit -d
+bindsym --release $mod+x exec --no-startup-id ~/github/wakit/wakit -m
 
 # Open Firefox bookmarks
 bindsym $mod+b exec ~/.config/i3/myScripts/firefox_bookmarks.sh

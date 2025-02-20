@@ -143,6 +143,12 @@ install_i3() {
     echo "QT_QPA_PLATFORMTHEME=qt5ct" | sudo tee -a /etc/environment
   fi
 
+  # Compiling cpu block
+  echo "- Compiling CPU block..."
+  cd configs/i3/i3blocks-plugins/cpu_usage2
+  make
+  cd ../../../..
+
   echo "- Instalation finished. Is recommended to install: sudo apt install kdeconnect"
 }
 

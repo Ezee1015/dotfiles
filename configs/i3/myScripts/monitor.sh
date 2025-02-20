@@ -15,6 +15,7 @@ if [[ $BLOCK_BUTTON -eq 1 ]]; then
     DP0_DISABLED=on
   fi
   ~/.config/i3/myScripts/wallpaper.sh
+  killall -SIGUSR1 conky
 fi
 
 if [[ $DP0_DISABLED == "on" ]] ; then

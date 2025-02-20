@@ -233,7 +233,7 @@ install_zathura() {
 
 install_xournalpp() {
   if [[ -z "$(flatpak list | grep 'com.github.xournalpp.xournalpp')" ]]; then
-    echo "Please install xournal++ before continuing (flatpak install com.github.xournalpp.xournalpp)..."
+    echo "Please install xournal++ before continuing (flatpak install com.github.xournalpp.xournalpp) and open it..."
     read
   fi
 

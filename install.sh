@@ -191,7 +191,7 @@ install_alacritty() {
 install_ranger() {
   if ! command -v ranger &> /dev/null; then
     echo "- Installing ranger..."
-    sudo apt install ranger exiftool
+    sudo apt install ranger exiftool trash-cli
   fi
 
   echo "- Linking configuration..."

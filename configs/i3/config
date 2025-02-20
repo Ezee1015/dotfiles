@@ -74,6 +74,9 @@ bindsym $mod+minus exec rofi -show calc -calc-command "echo '{result}' | tr -d '
 bindsym $mod+o exec --no-startup-id PATH="$PATH:$HOME/.config/i3/rofi-sound" rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"
 bindsym $mod+Shift+s exec --no-startup-id rofi -show find -modi find:~/.local/share/rofi/finder.sh
 
+# Clipboard
+bindsym $mod+c exec xfce4-clipman-history
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down

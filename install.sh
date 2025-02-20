@@ -82,6 +82,7 @@ install_rofi() {
     cd rofi-calc
   fi
   mkdir -p m4 && autoreconf -i && mkdir -p build && cd build/ && ../configure && make && sudo make install
+  cd ../..
 
   echo "- Downloading rofi-finder..."
   mkdir -p ~/.local/share/rofi/

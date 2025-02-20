@@ -169,6 +169,7 @@ install_alacritty() {
   if ! command -v rustup &> /dev/null; then
     echo "- Installing rustup..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    . "$HOME/.cargo/env"
     rustup override set stable
     rustup update stable
   fi

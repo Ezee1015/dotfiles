@@ -2,16 +2,12 @@ vim.g.table_mode_syntax = 0 -- disable the table syntax for improve speed
 
 return {
   -- Live preview de markdown
-  {"iamcco/markdown-preview.nvim",
-    build = function ()
-      vim.fn["mkdp#util#install"]()
-    end,
-
-    -- No se puede hacer `cmd = "MarkdownPreview"` porque una vez cargado
-    -- el plugin al llamar a MarkdownPreview, no reconoce el comando hasta
-    -- salir y volver a entrar al documento, ya que seguramente habilita
-    -- al comando con un `autocmd` que lo carga al entrar en un documento
-    -- de Markdown
+  -- Fix: https://github.com/iamcco/markdown-preview.nvim/issues/424
+  {
+      "iamcco/markdown-preview.nvim",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      ft = { "markdown" },
+      build = function() vim.fn["mkdp#util#install"]() end,
   },
 
   "dhruvasagar/vim-table-mode",
@@ -24,7 +20,7 @@ return {
   },
 
   {'jakewvincent/mkdnflow.nvim',
-    config = {
+    opts = {
       modules = {
         cmp = true
       },

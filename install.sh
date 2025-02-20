@@ -101,7 +101,7 @@ install_dunst() {
 }
 
 install_i3() {
-  echo "- Install for i3: sudo apt install i3-wm i3lock numlockx lxappearance pavucontrol lm-sensors thunar breeze-icon-theme scrot xfce4-clipman-plugin perl build-essential acpi network-manager-gnome sqlite3 ffmpeg gvfs gvfs-backends playerctl"
+  echo "- Install for i3: sudo apt install i3-wm i3lock imagemagick numlockx lxappearance pavucontrol lm-sensors thunar breeze-icon-theme breeze-cursor-theme scrot xfce4-clipman-plugin perl build-essential acpi network-manager-gnome sqlite3 ffmpeg gvfs gvfs-backends playerctl picom lightdm-settings"
   echo "- For Qt compatibility install: sudo apt install qt5ct qt5-style-plugins"
   echo -e "\n\n Press enter when ready..."
   read

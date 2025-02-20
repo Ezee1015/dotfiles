@@ -175,6 +175,7 @@ install_alacritty() {
   mkdir -p ~/.config/alacritty
   ln -sTf "$REPO_DIR/configs/alacritty/alacritty.toml" ~/.config/alacritty/alacritty.toml
   sudo ln -sTf "$REPO_DIR/compiled/alacritty/target/release/alacritty" /usr/local/bin/alacritty
+  cd ../..
 
   echo "- Copying .desktop file..."
   sudo cp desktop-entries/Alacritty.desktop /usr/share/applications

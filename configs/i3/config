@@ -73,9 +73,7 @@ bindsym $mod+Mod2+KP_Subtract exec LC_NUMERIC=en_US.UTF8 rofi -show calc -calc-c
 bindsym $mod+minus exec rofi -show calc -calc-command "echo '{result}' | tr -d '\n' | xclip -selection clipboard"
 bindsym $mod+o exec --no-startup-id PATH="$PATH:$HOME/.config/i3/rofi-sound" rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"
 bindsym $mod+Shift+s exec --no-startup-id rofi -show find -modi find:~/.local/share/rofi/finder.sh
-
-# Clipboard
-bindsym $mod+c exec xfce4-clipman-history
+bindsym $mod+c exec ~/.local/share/rofi/read_clipman | rofi -dmenu | ~/.local/share/rofi/send_to_clipboard
 
 # change focus
 bindsym $mod+h focus left

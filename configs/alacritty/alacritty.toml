@@ -46,12 +46,12 @@ background = "#1d1f21"
 foreground = "#c5c8c6"
 
 [colors.search.focused_match]
-background = "#000000"
-foreground = "#ffffff"
+background = "#f0c674"
+foreground = "#000000"
 
 [colors.search.matches]
-background = "#ffffff"
-foreground = "#000000"
+background = "#9e824c"
+foreground = "#ffffff"
 
 [colors.selection]
 background = "CellForeground"

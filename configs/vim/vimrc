@@ -1,0 +1,140 @@
+set nu rnu
+syntax on
+set cursorline
+set showcmd
+set encoding=UTF-8
+set wildmode=longest,list,full ""Path autocompletion
+set ic ""Ignore capitalization
+set smartindent
+set termguicolors
+set noshowmode
+set fillchars+=vert:█ " Change \| to █ in the vertical split
+
+set undofile
+set undodir=~/.vim/undodir
+
+colorscheme habamax
+
+"" Change between the block cursor and the vertical bar
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+let &t_SR = "\<Esc>[4 q"
+
+"" Tabs
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set expandtab
+
+"" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+"" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
+augroup vimrc-sync-fromstart
+  autocmd!
+  autocmd BufEnter * :syntax sync maxlines=200
+augroup END
+
+"" Remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+"" no one is really happy until you have this shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
+let mapleader=" "
+
+"" Exit insert
+imap ii <Esc>
+imap II <Esc>
+
+"" Split
+noremap <silent><Leader>h :<C-u>split<CR>
+noremap <silent><Leader>v :<C-u>vsplit<CR>
+
+"" Exit
+map <silent><Leader>w :wq<CR>
+map <silent><Leader>s :w<CR>
+map <silent><Leader>q :q<CR>
+map <silent><Leader>Q :q!<CR>
+
+"" Window
+nnoremap <silent><C-Right> <C-w>l
+nnoremap <silent><C-Left> <C-w>h
+nnoremap <silent><C-Up> <C-w>k
+nnoremap <silent><C-Down> <C-w>j
+nmap <silent><S-k> :res -2<CR>
+nmap <silent><S-j> :res +2<CR>
+nmap <silent><S-l> :vertical resize +2<CR>
+nmap <silent><S-h> :vertical resize -2<CR>
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+" Format lines
+map <silent><Leader>gj :join<CR>
+map <silent><Leader>g<S-j> :join!<CR>
+nmap Q gq
+
+"" Change between Capitalization
+map <silent><Leader>gq g~
+map <silent><Leader>m gu
+map <silent><Leader><S-m> gU
+
+"" Increase or decrease number
+map ++ <C-a>
+map -- <C-x>
+vmap ** g<C-a>
+vmap __ g<C-x>
+
+"" Substitution
+nmap S :%s//g<Left><Left>
+
+"" Shuffle lines
+vmap rr !sort -R<CR>
+
+"" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+
+"" Move lines around
+vmap <S-j> :m '>+1<CR>gv=gv
+vmap <S-Down> :m '>+1<CR>gv=gv
+vmap <S-k> :m '<-2<CR>gv=gv
+vmap <S-Up> :m '<-2<CR>gv=gv
+nnoremap <S-y> y$
+
+" Snippets
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+"" vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+vnoremap <S-l> >gv
+vnoremap <S-h> <gv

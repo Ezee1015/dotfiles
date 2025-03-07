@@ -296,6 +296,19 @@ install_tmux() {
   echo "- Remember to press <C-a><S-i> when first opening tmux..."
 }
 
+install_vim() {
+  if ! command -v vim &> /dev/null; then
+    echo "- Installing vim..."
+    sudo apt install vim
+  fi
+
+  echo "- Linking configuration..."
+  ln -sTf "$REPO_DIR/configs/vim/vimrc" ~/.vimrc
+
+  # Undo
+  mkdir -p ~/.vim/undodir
+}
+
 # install_neovim
 # install_zsh
 # install_feh
@@ -309,3 +322,4 @@ install_tmux() {
 # install_xournalpp
 # install_conky
 # install_tmux
+# install_vim

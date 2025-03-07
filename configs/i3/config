@@ -336,8 +336,7 @@ bindsym --release $mod+Shift+z exec ~/.config/i3/myScripts/zoomme.sh -c
 bindsym --release $mod+Shift+x exec --no-startup-id ~/github/wakit/wakit -d
 bindsym --release $mod+x exec --no-startup-id ~/github/wakit/wakit -m
 
-# Open Firefox bookmarks
-bindsym $mod+b exec ~/.config/i3/myScripts/firefox_bookmarks.sh
+bindsym $mod+b exec ~/.config/i3/myScripts/bookmarks.sh
 bindsym $mod+Shift+b exec ~/github/My_Scripts/sh/search_internet.sh
 
 # bindsym $mod+Mod2+KP_1 command # Shortcut pressing Alt+1(Numpad) in the numeric keyboard

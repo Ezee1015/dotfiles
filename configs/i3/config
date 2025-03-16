@@ -316,10 +316,10 @@ bindsym --release Num_Lock  exec $refresh_caps_lock
 bindsym --release $mod+Shift+m exec ~/github/My_Scripts/sh/mount_docs.sh
 
 # Dunst
-bindsym Control+space exec dunstctl close
-bindsym Control+Shift+space exec dunstctl close-all
-bindsym Control+h exec dunstctl history-pop
-bindsym Control+period exec dunstctl context
+bindsym $smod+space exec dunstctl close
+# bindsym $smod+Shift+space exec dunstctl close-all
+bindsym $smod+Shift+space exec dunstctl history-pop
+bindsym $smod+period exec dunstctl context
 
 # Screenshots
 bindsym Print exec i3-scrot -d

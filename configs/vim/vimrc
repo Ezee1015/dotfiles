@@ -128,13 +128,10 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 "" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
+nnoremap <silent> <leader>, :noh<cr>
 
-"" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
-
-"" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
+" Remap $ to gl
+nmap gl $
 
 "" vmap for maintain Visual Mode after shifting > and <
 vmap < <gv

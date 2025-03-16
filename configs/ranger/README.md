@@ -24,8 +24,8 @@
 | `H`                      | History Back            |
 | `L`                      | History Forward         |
 | `~`                      | Switch the view         |
-| `<Alt>j` or `<Control>j` | Scroll down the preview |
-| `<Alt>k` or `<Control>k` | Scroll up the preview   |
+| `<Alt>j` or `<Control>d` | Scroll down the preview |
+| `<Alt>k` or `<Control>u` | Scroll up the preview   |
 | `i`                      | Enter the preview       |
 
 ## File Operations

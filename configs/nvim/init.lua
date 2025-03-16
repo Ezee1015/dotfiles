@@ -27,3 +27,5 @@ require("maps")
 require("compile")
 -- lua/lazy_init.lua
 require("lazy_init")
+-- lua/floaterm.lua
+require("floaterm")

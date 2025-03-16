@@ -39,17 +39,6 @@ return {
     lazy=false
   },
 
-	-- Terminal
-	{"akinsho/toggleterm.nvim",
-    opts = {
-      size = vim.o.columns * 0.45
-    },
-    keys = {
-      {'<leader>x', ':ToggleTerm direction=float<CR>'    , { silent= true, noremap= true, desc="Terminal flotante" } },
-      {'<leader>X', ':ToggleTerm direction=vertical<CR>' , { silent= true, noremap= true, desc="Terminal vertical" } },
-    }
-  },
-
 	-- Lista de variables y funciones globales
 	{"preservim/tagbar",
     keys = {

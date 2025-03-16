@@ -57,9 +57,6 @@ return {
     }
   },
 
-	-- Highlightning de lenguajes
-	-- "sheerun/vim-polyglot",
-
 	-- Indica a la izquierda de la ventana los marks
 	"kshenoy/vim-signature",
 
@@ -83,47 +80,3 @@ return {
     },
   }
 }
-
-------------------------------
--- IMÁGENES DE SOURCE CODE
--- Muy buenos los plugins, pero no funciona en las últimas versiones de Neovim (el de LUA),
--- y no puedo proporcionarle mi colorscheme de Neovim (ambos).
--- Además requiere/depende de rust
-------------------------------
---
--- Vimscript
--- {"segeljakt/vim-silicon",
---   config = function ()
---     vim.g.silicon = {
---       theme = "gruvbox-dark",
---       font = "Hack"
---     }
---   end,
---   cmd="Silicon",
---   keys = {
---     { "<F9>", ":Silicon output.png<CR>", mode="v"},
---     { "<F9>", ":Silicon output.png<CR>", mode="n"}
---   }
--- },
---
--- En LUA (MEJOR)
---
---   {"krivahtoo/silicon.nvim",
---     -- branch = "nvim-0.9", -- Eliminar el branch, una vez que se solucione el error que actualmente hay con main (que solo funciona con nightly) y nvim 0.9
---     build = "./install.sh",
---     opts = {
---       font = "Hack=21",
---       theme = "tokyonight-storm",
---       watermark = {
---         text = ' @ezee1015',
---       },
---       window_title = function()
---         return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ':~:.')
---       end,
---     },
---     cmd = "Silicon",
---     keys = {
---       { '<leader>img', ':Silicon output.png', { noremap= true, mode="v" } }
---     }
---   }
--- }

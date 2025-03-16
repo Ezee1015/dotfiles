@@ -25,7 +25,8 @@ return {
       },
       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`
       -- default_file_explorer = true,
-      default_file_explorer = false,
+      -- SET THIS TEMPORARY TO FALSE TO [FIX THIS](https://github.com/neovim/neovim/issues/7189)
+      default_file_explorer = true,
       -- Restore window options to previous values when leaving an oil buffer
       restore_win_options = true,
       -- Skip the confirmation popup for simple operations
@@ -129,6 +130,7 @@ return {
     keys = {
       { "<leader>--", '<cmd>lua require("oil").open_float()<CR>', { desc = "File Explorer like a Buffer - Float"} },
       { "<leader>-" , '<cmd>lua require("oil").open()<CR>'      , { desc = "File Explorer like a Buffer"} },
-    }
+    },
+    lazy = false,
   }
 }

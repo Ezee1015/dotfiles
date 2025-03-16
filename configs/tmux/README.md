@@ -33,6 +33,7 @@
     * `t` --> Selecciona
     * `X` --> Kill
 * `PREFIX + :swap-window -t 1` --> Intercambia la ventana actual con la ventana 1
+* `PREFIX + Backspace` --> Clear the window (as `Control+l` or `clear` for a terminal)
 
 ## SESIONES
 * `PREFIX + :new`                 --> Crea nueva sesión

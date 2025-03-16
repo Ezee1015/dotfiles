@@ -258,6 +258,7 @@ install_xournalpp() {
   echo "- Installing configuration..."
   ln -sTf "$REPO_DIR/configs/xournalpp" "$CONFIG_PATH"
 
+  echo '- Remember to enable ToolCycle plugin!'
   echo "- Now open xournalpp, close it, and change this file $CONFIG_PATH/settings.xml:"
   echo '  - Change the page template property to <property name="pageTemplate" value="xoj/template&#10;copyLastPageSize=false&#10;copyLastPageSettings=true&#10;size=595.275591x841.889764&#10;backgroundType=graph&#10;backgroundColor=#241f31&#10;"/>'
   echo '  - Change the toolbar layout to <property name="selectedToolbar" value="Minimal Top Copy"/>'

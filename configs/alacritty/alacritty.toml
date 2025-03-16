@@ -1,7 +1,8 @@
-# [bell]
+[bell]
 # animation = "EaseOutExpo"
 # color = "#7d7d7d"
 # duration = 150
+command = "xkbbell"
 
 [colors.bright]
 black = "#666666"

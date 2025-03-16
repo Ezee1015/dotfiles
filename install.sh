@@ -299,7 +299,7 @@ install_tmux() {
 install_vim() {
   if ! command -v vim &> /dev/null; then
     echo "- Installing vim..."
-    sudo apt install vim
+    sudo apt install vim-gtk3
   fi
 
   echo "- Linking configuration..."

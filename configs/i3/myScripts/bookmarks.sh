@@ -10,10 +10,11 @@ BROWSER_COMMAND="flatpak run io.gitlab.librewolf-community"
 # BROWSER_INFO_FOLDER="$HOME/.var/app/org.mozilla.firefox/.mozilla"
 BROWSER_INFO_FOLDER="$HOME/.var/app/io.gitlab.librewolf-community/.librewolf"
 
+PROFILE="default-default"
 EXCLUDE_FOLDERS="'Mozilla Firefox', 'Manjaro Linux'"
 
 get_bookmarks() {
-  DB="$(find $BROWSER_INFO_FOLDER -iname '*places.sqlite')"
+  DB="$(find $BROWSER_INFO_FOLDER -iname '*places.sqlite' | grep "$PROFILE")"
   BOOKMARKS_TXT="/tmp/bookmarks.txt"
 
   # If the bookmarks list already exist

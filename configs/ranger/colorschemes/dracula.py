@@ -105,7 +105,10 @@ class Dracula(ColorScheme):
             fg = 4
         elif context.tab:
             if context.good:
-                bg = 2
+                fg = 0
+                bg = 4
+            else:
+                fg = 4
         elif context.link:
             fg = 6
 

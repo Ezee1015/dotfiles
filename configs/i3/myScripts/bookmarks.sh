@@ -19,15 +19,12 @@ get_bookmarks() {
 
   # If the bookmarks list already exist
   if [[ -f "$BOOKMARKS_TXT" ]]; then
-    SHASUM_DB="$(cat "$DB" | shasum)"
-    SHASUM_TXT="$(cat "$BOOKMARKS_TXT" | head -n 1)"
-
-    # echo "SHASUM DB : $SHASUM_DB"
-    # echo "SHASUM TXT: $SHASUM_TXT"
+    MTIME_DB=$(stat --printf="%Y" "$DB")
+    MTIME_TXT=$(stat --printf="%Y" "$BOOKMARKS_TXT")
 
     # If the bookmarks didn't change
-    if [[ "$SHASUM_DB" == "$SHASUM_TXT" ]]; then
-      BOOKMARKS="$(cat $BOOKMARKS_TXT | tail -n +2)"
+    if [[ $MTIME_TXT -ge $MTIME_DB ]]; then
+      BOOKMARKS="$(cat $BOOKMARKS_TXT)"
     else
       echo "- Bookmarks file updated. Reloading bookmarks..."
       rm "$BOOKMARKS_TXT"
@@ -49,9 +46,7 @@ get_bookmarks() {
       WHERE moz_bookmarks.parent NOT IN ($SQL_EXCLUDE_FOLDERS)"
 
     BOOKMARKS="$(sqlite3 -line "/tmp/places.sqlite" "$SQL")"
-
-    cat "/tmp/places.sqlite" | shasum > $BOOKMARKS_TXT
-    echo "$BOOKMARKS" >> $BOOKMARKS_TXT
+    echo "$BOOKMARKS" > $BOOKMARKS_TXT
 
     rm "/tmp/places.sqlite"
   fi

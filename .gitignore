@@ -1,5 +1,6 @@
 /compiled
-/configs/ranger/colorschemes
+/configs/ranger/colorschemes/__init__.py
+/configs/ranger/colorschemes/__pycache__
 /configs/ranger/plugins
 /configs/xournalpp/settings.xml
 /configs/xournalpp/metadata

@@ -197,13 +197,6 @@ install_ranger() {
   echo "- Linking configuration..."
   ln -sTf $REPO_DIR/configs/ranger ~/.config/ranger
 
-  if [[ ! -e ~/.config/ranger/colorschemes/dracula.py ]]; then
-    echo "- Installing colorscheme..."
-    mkdir -p ~/.config/ranger/colorschemes
-    git clone https://github.com/dracula/ranger.git /tmp/dracula
-    mv /tmp/dracula/dracula.py ~/.config/ranger/colorschemes/
-  fi
-
   if [[ ! -d ~/.config/ranger/plugins/ranger_devicons ]]; then
     echo "- Installing ranger devicons..."
     mkdir -p ~/.config/ranger/plugins

@@ -98,3 +98,5 @@
 | `dT`        | Move to trash                                                      |
 | `uT`        | Restore file from trash                                            |
 | `F`         | Recursive search (max. 5 dirs deep). After, press 'f' to flat to 0 |
+| `Ms`        | Mount with sshfs                                                   |
+| `MS`        | Unmount with sshfs                                                 |

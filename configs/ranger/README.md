@@ -53,13 +53,15 @@
 | `S`        | Run the terminal in your current ranger window (exit to go back to ranger) |
 
 ## Tabs
-| Shortcut    | Description           |
-|-------------|-----------------------|
-| `C-n`       | Create new tab        |
-| `C-w`       | Close current tab     |
-| tab         | Next tab              |
-| shift + tab | Previous tab          |
-| alt + [n]   | Goto / create [n] tab |
+| Shortcut     | Description           |
+|--------------|-----------------------|
+| `C-n`        | Create new tab        |
+| `C-w` or `q` | Close current tab     |
+| tab          | Next tab              |
+| shift + tab  | Previous tab          |
+| alt + [n]    | Goto / create [n] tab |
+| `<Control>h` | Move tab to the left  |
+| `<Control>l` | Move tab to the right |
 
 ## File substituting
 | Shortcut | Description                         |

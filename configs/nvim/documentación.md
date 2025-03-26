@@ -223,6 +223,7 @@
 |     **`#`**     | Lo mismo que `*` pero al revés                                                                   |
 |     **`gf`**    | Abre el archivo sobre el que el cursor esta posicionado                                          |
 |     **`gF`**    | Lo mismo que ‘gf’ pero abriéndolo en una cierta linea especificada (Ej: “archivo.c:75”)          |
+|     **`gx`**    | Abrir con xdg-open (por ejemplo un link)                                                         |
 |     **`.`**     | Rehace la ultima acción. Por ejemplo: ejecutando «ci" hola», para repetirlo, presiona « . »      |
 | **`"[Letra]y`** | Copia un texto dentro de una tecla (registro)                                                    |
 | **`"[Letra]p`** | Pega un texto que fue copiado dentro de una tecla (registro)                                     |

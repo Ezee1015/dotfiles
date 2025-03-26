@@ -11,11 +11,11 @@ fusermount -u "$MOUNTPOINT"
 if [[ $? -ne 0 ]]; then
   echo "[ERROR] Error while unmounting $MOUNTPOINT"
 
-  if [ -z "$(grep " $MOUNTPOINT " /etc/mtab)" ] && [ -z $(ls "$MOUNTPOINT") ]; then
+  if [ -z "$(grep " $MOUNTPOINT " /etc/mtab)" ] && [ -z "$(ls "$MOUNTPOINT")" ]; then
     read -rn1 -p  "--> $MOUNTPOINT folder is empty. Do you want to remove the folder? [y/N]: " ANS
     if [ "$ANS" == "y" ] || [ "$ANS" == "Y" ]; then
       echo
-      sudo rmdir "$MOUNTPOINT"
+      sudo -k rmdir "$MOUNTPOINT"
       exit 0
     fi
     echo "[INFO] The folder will not be deleted"
@@ -25,7 +25,7 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-sudo rmdir "$MOUNTPOINT"
+sudo -k rmdir "$MOUNTPOINT"
 if [[ $? -ne 0 ]]; then
   read -p "[ERROR] Folder $MOUNTPOINT is not empty"
   exit 1

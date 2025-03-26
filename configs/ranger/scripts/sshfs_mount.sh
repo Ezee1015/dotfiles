@@ -18,12 +18,11 @@ if [[ "$MOUNTPOINT" == "/media/$USER/" ]]; then
 fi
 
 # Create folder
-sudo mkdir "$MOUNTPOINT"
+sudo -k bash -c "mkdir \"$MOUNTPOINT\" && chown $USER:$USER \"$MOUNTPOINT\""
 if [[ $? -ne 0 ]]; then
   read -p "[ERROR] Error while creating folder. Press a Enter to exit..."
   exit 1
 fi
-sudo chown $USER:$USER "$MOUNTPOINT"
 
 # Sshfs
 if [[ -z "$SSH_USER" ]]; then

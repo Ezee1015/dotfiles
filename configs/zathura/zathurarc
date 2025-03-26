@@ -1,10 +1,9 @@
 # Invert colors (for dark mode)
 set recolor
 set page-padding 10
-set sandbox none # fix: doesn't open links in the browser
 
 # Can't open links? Try this option... (https://www.youtube.com/watch?v=CdCs_sZNNPQ&t=1214s)
-# set sandbox none
+set sandbox none
 
 # Hide all the elements of the GUI
 # set guioptions none

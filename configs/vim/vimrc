@@ -10,6 +10,10 @@ set termguicolors
 set noshowmode
 set fillchars+=vert:█ " Change \| to █ in the vertical split
 
+filetype on
+filetype plugin on
+filetype indent on " file type based indentation
+
 set undofile
 set undodir=~/.vim/undodir
 

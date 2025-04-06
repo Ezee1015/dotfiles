@@ -29,3 +29,5 @@ require("compile")
 require("lazy_init")
 -- lua/floaterm.lua
 require("floaterm")
+-- lua/marklink.lua
+require("marklink")

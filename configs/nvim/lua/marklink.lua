@@ -1,6 +1,27 @@
 -- Script that allows you to insert a link in a markdown file with it's title
 -- It gets the URL from the clipboard
 
+local function getSelectionBounds()
+  local lineFrom = vim.fn.getpos("v")[2]
+  local lineTo = vim.fn.getpos(".")[2]
+  local colFrom = vim.fn.getpos("v")[3]
+  local colTo = vim.fn.getpos(".")[3]
+
+  if lineFrom > lineTo then
+    local aux = lineTo
+    lineTo = lineFrom
+    lineFrom = aux
+  end
+
+  if colFrom > colTo and lineFrom == lineTo then
+    local aux = colTo
+    colTo = colFrom
+    colFrom = aux
+  end
+
+  return lineFrom, lineTo, colFrom, colTo
+end
+
 local function insertLink(url, title)
   local append = '[' .. title .. '](' .. url .. ')'
   local cursor = vim.api.nvim_win_get_cursor(0)
@@ -15,11 +36,7 @@ local function insertLink(url, title)
     to = pos + 1
 
   elseif vim.fn.mode() == "v" then
-    local colFrom = vim.fn.getpos("v")[3]
-    local colTo = vim.fn.getpos(".")[3]
-    local lineFrom = vim.fn.getpos("v")[2]
-    local lineTo = vim.fn.getpos(".")[2]
-
+    local lineFrom, lineTo, colFrom, colTo = getSelectionBounds()
     if lineFrom ~= lineTo then
       error("Multiple line visual selection not available")
       return false
@@ -59,18 +76,43 @@ local function getTitle(url)
   return vim.fn.system(cmd):gsub("\n", "")
 end
 
-function MarklinkFromClipboard()
-  local url = vim.fn.getreg("+"):gsub("\n", "");
-
-  if checkURL(url) then
-    local title = getTitle(url)
-    if not insertLink(url, title) then return false end
-    return true;
+local function Marklink(url, origin)
+  if not checkURL(url) then
+    error(origin .. " text is not a link!\nCopied: " .. url)
+    return false
   end
 
-  error("Copied text is not a link!\nCopied: " .. url)
-  return false
+  local title = getTitle(url)
+  if not insertLink(url, title) then return false end
+  return true;
+end
+
+function MarklinkFromClipboard()
+  local url = vim.fn.getreg("+"):gsub("\n", "");
+  return Marklink(url, "Copied")
+end
+
+function MarklinkFromVisual()
+  if vim.fn.mode() ~= "v" then
+    error("Not in visual mode")
+    return false
+  end
+
+  local lineFrom, lineTo, colFrom, colTo = getSelectionBounds()
+
+  if lineFrom ~= lineTo then
+    error("Multiple line visual selection not available")
+    return false
+  end
+
+  local line = vim.api.nvim_get_current_line()
+  local url = line:sub(colFrom, colTo)
+
+  return Marklink(url, "Selected")
 end
 
 vim.api.nvim_create_user_command("MarklinkClipboard", MarklinkFromClipboard, {})
+vim.api.nvim_create_user_command("MarklinkVisual", MarklinkFromVisual, {})
+
 vim.keymap.set({"n", "v"}, "<leader>l", MarklinkFromClipboard);
+vim.keymap.set("v", "<leader><S-l>", MarklinkFromVisual);

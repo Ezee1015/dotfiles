@@ -365,9 +365,9 @@ exec conky -c ~/.config/conky/conky.conf
 # Others
 exec_always --no-startup-id ffplay ~/.config/i3/sounds/login.ogg -autoexit -nodisp -loglevel quiet
 
-# Window rules
+# Window rules (get the class with `xprop WM_CLASS`)
 assign [class="ffplay"] $workspace4
-assign [class="thunderbird-esr"] $workspace10
+assign [class="thunderbird-default"] $workspace10
 
 # Icons on the title bar (with Horizontal padding)
 for_window [all] title_window_icon padding 6px

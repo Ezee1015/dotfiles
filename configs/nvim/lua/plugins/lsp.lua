@@ -43,6 +43,7 @@ local function lspconfig_config()
 
   -- LSP Initialization (config)
   require'lspconfig'.clangd.setup({})
+  require'lspconfig'.hls.setup({})
   require'lspconfig'.pylsp.setup{
     settings = {
       pylsp = {

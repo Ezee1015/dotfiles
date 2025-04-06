@@ -2,7 +2,7 @@
 My dotfiles
 
 ## Install
-´´´bash
+```bash
 source ./install.sh
-´´´
+```
 After that, you can check at the end of the `install.sh` script for the installation commands to execute

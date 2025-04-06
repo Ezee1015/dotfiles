@@ -97,7 +97,8 @@ noremap <C-h> <C-w>h
 
 " Format lines
 map <silent><Leader>gj :join<CR>
-map <silent><Leader>g<S-j> :join!<CR>
+map <silent><leader>j :join<CR>
+map <silent><leader><S-j> :join!<CR>
 nmap Q gq
 
 "" Change between Capitalization

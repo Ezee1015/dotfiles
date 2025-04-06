@@ -70,14 +70,14 @@ imap ii <Esc>
 imap II <Esc>
 
 "" Split
-noremap <silent><Leader>h :<C-u>split<CR>
-noremap <silent><Leader>v :<C-u>vsplit<CR>
+noremap <silent><leader>h :<C-u>split<CR>
+noremap <silent><leader>v :<C-u>vsplit<CR>
 
 "" Exit
-map <silent><Leader>w :wq<CR>
-map <silent><Leader>s :w<CR>
-map <silent><Leader>q :q<CR>
-map <silent><Leader>Q :q!<CR>
+map <silent><leader>w :wq<CR>
+map <silent><leader>s :w<CR>
+map <silent><leader>q :q<CR>
+map <silent><leader>Q :q!<CR>
 
 "" Window
 nnoremap <silent><C-Right> <C-w>l
@@ -96,15 +96,15 @@ noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
 " Format lines
-map <silent><Leader>gj :join<CR>
+map <silent><leader>gj :join<CR>
 map <silent><leader>j :join<CR>
 map <silent><leader><S-j> :join!<CR>
 nmap Q gq
 
 "" Change between Capitalization
-map <silent><Leader>gq g~
-map <silent><Leader>m gu
-map <silent><Leader><S-m> gU
+map <silent><leader>gq g~
+map <silent><leader>m gu
+map <silent><leader><S-m> gU
 
 "" Increase or decrease number
 map ++ <C-a>

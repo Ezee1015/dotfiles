@@ -328,9 +328,10 @@ bindsym Control+Shift+Print exec i3-scrot -w
 bindsym Control+Print exec thunar ~/Pictures
 
 # Zoom/Magnify
-bindsym --release $mod+z exec ~/.config/i3/myScripts/zoomme.sh
+bindsym --release $mod+z exec ~/.config/i3/myScripts/zoomme.sh --floating
 # bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png
-bindsym --release $mod+Shift+z exec ~/.config/i3/myScripts/zoomme.sh -c
+bindsym --release $mod+Shift+z exec ~/.config/i3/myScripts/zoomme.sh
+bindsym --release $smod+z exec ~/.config/i3/myScripts/zoomme.sh -c
 
 # Wakit
 bindsym --release $mod+Shift+x exec --no-startup-id ~/github/wakit/wakit -d

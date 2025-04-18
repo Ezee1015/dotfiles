@@ -1,12 +1,15 @@
 #!/bin/bash
 
 WEBCAMS=(/dev/video*)
-WEBCAMS_LEN=${#WEBCAMS[@]}
-if [[ $WEBCAMS_LEN -eq 0 ]]; then exit 0; fi
-FIRST="${WEBCAMS[0]}"
 
+# No webcams detected
+if [[ "$WEBCAMS" == "/dev/video*" ]]; then exit; fi
+# WEBCAMS_LEN=${#WEBCAMS[@]}
+# if [[ $WEBCAMS_LEN -eq 0 ]]; then exit 0; fi
+
+FIRST="${WEBCAMS[0]}"
 for WC in "${WEBCAMS[@]}"; do
-  FUSER="$(fuser $WC)"
+  FUSER="$(fuser $WC 2> /dev/null)"
   if [[ $FUSER ]]; then
     APP_ID=$(echo "$FUSER" | awk '{print $1}')
     APP_NAME=$(ps -p $APP_ID | awk '{print $4}' | tail --lines 1)

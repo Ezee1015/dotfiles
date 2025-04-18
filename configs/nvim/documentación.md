@@ -76,7 +76,6 @@
         * [Globales](#globales)
     * [Mkdnflow (Markdown)](#mkdnflow-markdown)
 * [Datos útiles](#datos-útiles)
-* [Buffer <-> Tab <-> Session](#buffer---tab---session)
 * [Ejemplos de RegEx en Neovim](#ejemplos-de-regex-en-neovim)
 
 <!-- vim-markdown-toc -->
@@ -179,7 +178,9 @@
 |    **`:![Comando Bash]`**    | Ejecuta comando de Terminal                                                                                                                  |
 |     **`:read [Comando]`**    | Lee un Comando y lo importa al texto (Ejemplo comando: !date o un archivo como “Texto.txt”)                                                  |
 |      **`:earlier 10m`**      | Retrocede los cambios según en el tiempo especificado.                                                                                       |
+|       **`:later 10m`**       | Avanza los cambios según en el tiempo especificado.                                                                                          |
 | **`:verbose map [MAPPING]`** | Muestra a qué corresponde el mapping y donde fueron declarados por última vez                                                                |
+|      **`:Man [página]`**     | Muestra el `man` de la página.                                                                                                               |
 
 
 ## Atajos
@@ -780,11 +781,6 @@ Se puede modificar los archivos como si fuera un buffer de texto
 
 - Si se está el cursor debajo de una palabra y se apreta **`*`**, busca la palabra, y si se presiona **`S/`** Busca y reemplaza el termino.
 - En caso de que **el sistema falle o la electricidad se interrumpa**, se puede recuperar los cambios del archivo si abrimos el archivo en el que estábamos así: `nvim -r archivo.txt`. También se puede listar los archivos con `vim –r` y se repite el paso anterior colocando la ruta del archivo temporal con el nombre del `.swp`
-
-## Buffer <-> Tab <-> Session
-
-<!-- <img src="./VIM Buffs Tabs Sessions Cuadro Conseptual - Light.png"> -->
-<img src="./VIM Buffs Tabs Sessions Cuadro Conseptual - Dark.png">
 
 ---
 

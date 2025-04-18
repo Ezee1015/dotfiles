@@ -340,6 +340,8 @@ bindsym --release $mod+x exec --no-startup-id ~/github/wakit/wakit -m
 bindsym $mod+b exec ~/.config/i3/myScripts/bookmarks.sh
 bindsym $mod+Shift+b exec ~/github/My_Scripts/sh/search_internet.sh
 
+bindsym $smod+r exec pkill picom && sleep 0.5 && picom --daemon
+
 # bindsym $mod+Mod2+KP_1 command # Shortcut pressing Alt+1(Numpad) in the numeric keyboard
 
 # Auto execute apps at startup....

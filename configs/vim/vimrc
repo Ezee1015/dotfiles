@@ -76,8 +76,7 @@ noremap <silent><leader>v :<C-u>vsplit<CR>
 "" Exit
 map <silent><leader>w :wq<CR>
 map <silent><leader>s :w<CR>
-map <silent><leader>q :q<CR>
-map <silent><leader>Q :q!<CR>
+map <silent><leader>q :q!<CR>
 
 "" Window
 nnoremap <silent><C-Right> <C-w>l

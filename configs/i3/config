@@ -247,6 +247,9 @@ bindsym $smod+Shift+l move workspace to output right
 bindsym $smod+Shift+k move workspace to output up
 bindsym $smod+Shift+j move workspace to output down
 
+# Swap workspaces
+bindsym $smod+s exec ~/.config/i3/myScripts/swap_workspaces.sh
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 

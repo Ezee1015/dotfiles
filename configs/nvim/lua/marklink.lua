@@ -72,7 +72,7 @@ local function checkURL(url)
 end
 
 local function getTitle(url)
-  local cmd = "curl -Ls \"" .. url .. "\" | grep -oE \"<title>.*</title>\" | sed 's/<title>//' | sed 's/<\\/title>//'"
+  local cmd = "curl -Ls \"" .. url .. "\" | grep -oE \"<title>.*</title>\" | sed 's/<title>//' | sed 's/<\\/title>//' | head -1"
   return vim.fn.system(cmd):gsub("\n", "")
 end
 

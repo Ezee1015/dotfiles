@@ -515,6 +515,7 @@ En un texto separado por comas, se selecciona, se presiona ⎵tt y lo ordena en 
 | **`⎵df`** | Selecciona el tipo de archivo (extención) manualmente (para sintaxis) |
 | **`⎵dl`** | Busqueda fuzzy dentro del archivo actual (buffer) por lineas          |
 | **`⎵dh`** | Buscador entre las ayudas disponibles de :help de vim                 |
+| **`⎵dm`** | Buscador entre las guías de Man                                       |
 | **`⎵dk`** | Muestra la lista de keymaps                                           |
 | **`⎵dd`** | Lista de errores, advertencias y sugerencias del LSP                  |
 | **`⎵dt`** | Muestra la lista con variables y funciones que encontró TreeSitter    |

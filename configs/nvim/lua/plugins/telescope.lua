@@ -177,6 +177,7 @@ return {
       { '<leader>dQ', "<cmd>lua require('telescope.builtin').registers{}<CR>"      , desc="Registros"},
       { '<leader>dq', "<cmd>lua require('telescope').extensions.macroscope.default(Telescope_theme)<CR>"      , desc="Macros" },
       { '<leader>dc', "<cmd>lua require('telescope').extensions.neoclip.default(Telescope_theme)<CR>"         , desc="Portapapeles" },
+      { '<leader>dm', "<cmd>lua require('telescope.builtin').man_pages({ sections = { \"ALL\" } })<CR>"       , desc="Portapapeles" },
 
       { '<leader>gr', "<cmd>lua require('telescope.builtin').git_branches(Telescope_theme)<CR>"             , desc="Git branches" },
       { '<leader>gc', "<cmd>lua require('telescope.builtin').git_bcommits(Telescope_theme)<CR>"             , desc="Commits in the current file" },

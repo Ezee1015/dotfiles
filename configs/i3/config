@@ -330,6 +330,9 @@ bindsym --release Shift+Print exec i3-scrot -s
 bindsym Control+Shift+Print exec i3-scrot -w
 bindsym Control+Print exec thunar ~/Pictures
 
+# Run/Stop conky
+bindsym $smod+c exec pgrep conky && killall conky || conky
+
 # Zoom/Magnify
 bindsym --release $mod+z exec ~/.config/i3/myScripts/zoomme.sh --floating
 # bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png

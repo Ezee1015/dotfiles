@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ ! $(xrandr | grep "DisplayPort-0") ]]; then
+  exit
+fi
+
 if [[ -z "$(xrandr | grep "DisplayPort-0 connected (")" ]]; then
   DP0_DISABLED=on
 else

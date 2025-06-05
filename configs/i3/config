@@ -256,6 +256,9 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+# Toggle Bloq Mayus as Control
+bindsym $mod+Escape exec ~/.config/i3/myScripts/toggle_bloq_mayus_control.sh
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode

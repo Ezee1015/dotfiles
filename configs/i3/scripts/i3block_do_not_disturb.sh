@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.config/i3/myScripts/refresh_blocks.sh
+source ~/.config/i3/scripts/refresh_blocks.sh
 source ~/.config/i3/sounds/notification.sh
 
 if [[ ! -z $BLOCK_BUTTON ]]; then

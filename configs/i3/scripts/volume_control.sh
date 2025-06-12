@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ~/.config/i3/myScripts/refresh_blocks.sh
-source ~/.config/i3/myScripts/volNotify.sh
+source ~/.config/i3/scripts/refresh_blocks.sh
+source ~/.config/i3/scripts/volume_notification.sh
 
 error() {
   echo "You have to provide: increase or decrease"

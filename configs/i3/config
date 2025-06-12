@@ -46,8 +46,8 @@ bindsym $mod+Return exec /usr/local/bin/alacritty || i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # Mute/Unmute notifications
-bindsym $mod+n exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/do_not_disturb.sh
-bindsym $mod+m exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/mic_control.sh
+bindsym $mod+n exec BLOCK_BUTTON=1 ~/.config/i3/scripts/i3block_do_not_disturb.sh
+bindsym $mod+m exec BLOCK_BUTTON=1 ~/.config/i3/scripts/i3block_mic_volume.sh
 
 # Rofi
 # Command for changing rofi's theme: rofi-theme-selector
@@ -109,7 +109,7 @@ bindsym $mod+a focus parent
 bindsym $mod+shift+a focus child
 
 # Enable/Disable second monitor
-bindsym $smod+o exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/monitor.sh
+bindsym $smod+o exec BLOCK_BUTTON=1 ~/.config/i3/scripts/i3block_monitor.sh
 
 # Move workspaces between monitors
 bindsym $smod+Shift+h move workspace to output left
@@ -118,7 +118,7 @@ bindsym $smod+Shift+k move workspace to output up
 bindsym $smod+Shift+j move workspace to output down
 
 # Swap workspaces
-bindsym $smod+s exec ~/.config/i3/myScripts/swap_workspaces.sh
+bindsym $smod+s exec ~/.config/i3/scripts/swap_workspaces.sh
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -127,7 +127,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Toggle Bloq Mayus as Control
-bindsym $mod+Escape exec ~/.config/i3/myScripts/toggle_bloq_mayus_control.sh
+bindsym $mod+Escape exec ~/.config/i3/scripts/toggle_bloq_mayus_control.sh
 
 # Open YT Short into a normal mode
 bindsym $smod+Shift+s exec xdg-open "$(xclip -clip sel -o | sed 's/shorts\//watch?v=/')"
@@ -153,20 +153,20 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Increase and decrease volume with Page Down and Page Up
-bindsym $mod+Next  exec ~/.config/i3/myScripts/volume_control.sh decrease
-bindsym $mod+Prior exec ~/.config/i3/myScripts/volume_control.sh increase
+bindsym $mod+Next  exec ~/.config/i3/scripts/volume_control.sh decrease
+bindsym $mod+Prior exec ~/.config/i3/scripts/volume_control.sh increase
 
 # Increase and decrease brightness with Home and End
-bindsym $mod+Home exec xbacklight -inc 10 || ~/.config/i3/myScripts/brightnessControl.sh -inc
-bindsym $mod+End  exec xbacklight -dec 10 || ~/.config/i3/myScripts/brightnessControl.sh -dec
+bindsym $mod+Home exec xbacklight -inc 10 || ~/.config/i3/scripts/brightness_control.sh -inc
+bindsym $mod+End  exec xbacklight -dec 10 || ~/.config/i3/scripts/brightness_control.sh -dec
 
 mode "exit: [l]ogout, [r]eboot, [s]hutdown, [S]uspend, [L]ock, [t]urn off screen" {
   bindsym l exec ~/.config/i3/sounds/shutdown.sh && i3-msg exit
   bindsym r exec ~/.config/i3/sounds/shutdown.sh && systemctl reboot
   bindsym s exec ~/.config/i3/sounds/shutdown.sh && systemctl poweroff
 
-  bindsym Shift+s exec i3-msg mode "default" && ~/.config/i3/myScripts/lock_screen.sh && systemctl suspend
-  bindsym Shift+l exec i3-msg mode "default" && ~/.config/i3/myScripts/lock_screen.sh
+  bindsym Shift+s exec i3-msg mode "default" && ~/.config/i3/scripts/lock_screen.sh && systemctl suspend
+  bindsym Shift+l exec i3-msg mode "default" && ~/.config/i3/scripts/lock_screen.sh
   # Watch out: ffplay prevents the monitor from entering sleep mode
   bindsym --release t exec i3-msg mode "default" && xset dpms force off
 
@@ -177,8 +177,8 @@ mode "exit: [l]ogout, [r]eboot, [s]hutdown, [S]uspend, [L]ock, [t]urn off screen
 bindsym $mod+Shift+e mode "exit: [l]ogout, [r]eboot, [s]hutdown, [S]uspend, [L]ock, [t]urn off screen"
 
 # Restart StatusBar everytime CapsLock gets pressed
-bindsym --release Caps_Lock exec bash -c "source ~/.config/i3/myScripts/refresh_blocks.sh && refresh_caps_lock_block"
-bindsym --release Num_Lock  exec bash -c "source ~/.config/i3/myScripts/refresh_blocks.sh && refresh_caps_lock_block"
+bindsym --release Caps_Lock exec bash -c "source ~/.config/i3/scripts/refresh_blocks.sh && refresh_caps_lock_block"
+bindsym --release Num_Lock  exec bash -c "source ~/.config/i3/scripts/refresh_blocks.sh && refresh_caps_lock_block"
 
 # Mount Documents
 bindsym --release $mod+Shift+m exec ~/github/My_Scripts/sh/mount_docs.sh
@@ -199,16 +199,16 @@ bindsym Control+Print exec thunar ~/Pictures
 bindsym $smod+c exec pgrep conky && killall conky || conky
 
 # Zoom/Magnify
-bindsym --release $mod+z exec ~/.config/i3/myScripts/zoomme.sh --floating
+bindsym --release $mod+z exec ~/.config/i3/scripts/zoomme.sh --floating
 # bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png
-bindsym --release $mod+Shift+z exec ~/.config/i3/myScripts/zoomme.sh
-bindsym --release $smod+z exec ~/.config/i3/myScripts/zoomme.sh -c
+bindsym --release $mod+Shift+z exec ~/.config/i3/scripts/zoomme.sh
+bindsym --release $smod+z exec ~/.config/i3/scripts/zoomme.sh -c
 
 # Wakit
 bindsym --release $mod+Shift+x exec --no-startup-id ~/github/wakit/wakit -d
 bindsym --release $mod+x exec --no-startup-id ~/github/wakit/wakit -m
 
-bindsym $mod+b exec ~/.config/i3/myScripts/bookmarks.sh
+bindsym $mod+b exec ~/.config/i3/scripts/bookmarks.sh
 bindsym $mod+Shift+b exec ~/github/My_Scripts/sh/search_internet.sh
 
 bindsym $smod+r exec pkill picom && sleep 0.5 && picom --daemon
@@ -224,7 +224,7 @@ bindsym $smod+r exec pkill picom && sleep 0.5 && picom --daemon
 ######################################################
 
 # Scripts
-exec_always ~/.config/i3/myScripts/wallpaper.sh
+exec_always ~/.config/i3/scripts/wallpaper.sh
 exec --no-startup-id ~/apps/autorun.sh
 # Services
 # KDE authentication dialog

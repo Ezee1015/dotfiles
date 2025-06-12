@@ -155,6 +155,7 @@ bindsym $mod+r mode "resize"
 # Increase and decrease volume with Page Down and Page Up
 bindsym $mod+Next  exec ~/.config/i3/scripts/volume_control.sh decrease
 bindsym $mod+Prior exec ~/.config/i3/scripts/volume_control.sh increase
+bindsym $mod+Delete exec ~/.config/i3/scripts/volume_control.sh mute
 
 # Increase and decrease brightness with Home and End
 bindsym $mod+Home exec xbacklight -inc 10 || ~/.config/i3/scripts/brightness_control.sh -inc

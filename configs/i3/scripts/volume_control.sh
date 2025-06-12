@@ -12,15 +12,27 @@ if [[ $# -ne 1 ]]; then
   error
 fi
 
+MUTED=$(amixer sget Master | grep "\[off\]")
+
 case "$1" in
   "increase")
-    amixer -q set Master 5%+
-    refresh_volume_block
+    if [[ -z "$MUTED" ]]; then
+      amixer -q set Master 5%+
+      refresh_volume_block
+    fi
     volume_notification
     ;;
 
   "decrease")
-    amixer -q set Master 5%-
+    if [[ -z "$MUTED" ]]; then
+      amixer -q set Master 5%-
+      refresh_volume_block
+    fi
+    volume_notification
+    ;;
+
+  "mute")
+    amixer set Master toggle
     refresh_volume_block
     volume_notification
     ;;

@@ -1,50 +1,43 @@
+######################################################
+#                       BASIC                        #
+######################################################
 set $mod Mod1
 set $smod Mod4
 
 font pango:hackNerdFont 9
 
-# Align title to the center
 title_align center
+gaps inner 10px
+gaps outer 0px
+# Enable gaps when there's more than one window on the workspace
+smart_gaps on
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
+set $path_with_scripts PATH="$PATH:$HOME/apps:/usr/local/bin"
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
-
-# Refresh some widgets
-set $refresh_volume pkill -SIGRTMIN+2 i3blocks && ~/.config/i3/myScripts/volNotify.sh
-set $refresh_caps_lock pkill -SIGRTMIN+10 i3blocks
-set $refresh_mute_notifications pkill -SIGRTMIN+3 i3blocks
-set $refresh_mic_notifications pkill -SIGRTMIN+4 i3blocks
+######################################################
+#                      BINDINGS                      #
+######################################################
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_volume
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_volume_block
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_volume_block
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_volume_block
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_volume_block
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# GAPS
-gaps inner 10px
-gaps outer 0px
-  # Enable gaps when there's more than one window on the workspace
-smart_gaps on
-
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec /usr/local/bin/alacritty || i3-sensible-terminal
@@ -53,20 +46,12 @@ bindsym $mod+Return exec /usr/local/bin/alacritty || i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # Mute/Unmute notifications
-set $notification_change_sound ~/.config/i3/myScripts/notificationSounds.sh
-bindsym $mod+n exec BLOCK_BUTTON=1 ~/.config/i3/i3blocks-plugins/dunst/dunst && pkill ffplay && $refresh_mute_notifications && $notification_change_sound
-bindsym $mod+m exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/mic_control.sh && $refresh_mic_notifications
+bindsym $mod+n exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/do_not_disturb.sh
+bindsym $mod+m exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/mic_control.sh
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-
+# Rofi
 # Command for changing rofi's theme: rofi-theme-selector
-
-set $path_my_scripts PATH="$PATH:$HOME/apps:/usr/local/bin"
-bindsym $mod+d exec $path_my_scripts rofi -show "run"
+bindsym $mod+d exec $path_with_scripts rofi -show "run"
 bindsym $mod+Shift+d exec rofi -show "drun"
 bindsym $mod+Shift+f exec rofi -show "filebrowser"
 bindsym $mod+Mod2+KP_Subtract exec "LC_NUMERIC=en_US.UTF8 rofi -show calc -theme-str \\"listview {enabled: false;}\\" -calc-command \\"echo '{result}' | tr -d '\n' | xclip -selection clipboard\\" -no-history"
@@ -74,14 +59,13 @@ bindsym $mod+minus exec rofi -show calc -calc-command "echo '{result}' | tr -d '
 bindsym $mod+o exec --no-startup-id PATH="$PATH:$HOME/.config/i3/rofi-sound" rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"
 bindsym $mod+Shift+s exec --no-startup-id rofi -show find -modi find:~/.local/share/rofi/finder.sh
 bindsym $mod+c exec ~/.local/share/rofi/xfce4-clipman-rofi
+bindsym $mod+Shift+w exec rofi -show window
 
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -94,8 +78,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -103,7 +85,6 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
-
 # split in vertical orientation
 bindsym $mod+v split v
 
@@ -127,8 +108,206 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+shift+a focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Enable/Disable second monitor
+bindsym $smod+o exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/monitor.sh
+
+# Move workspaces between monitors
+bindsym $smod+Shift+h move workspace to output left
+bindsym $smod+Shift+l move workspace to output right
+bindsym $smod+Shift+k move workspace to output up
+bindsym $smod+Shift+j move workspace to output down
+
+# Swap workspaces
+bindsym $smod+s exec ~/.config/i3/myScripts/swap_workspaces.sh
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Toggle Bloq Mayus as Control
+bindsym $mod+Escape exec ~/.config/i3/myScripts/toggle_bloq_mayus_control.sh
+
+# Open YT Short into a normal mode
+bindsym $smod+Shift+s exec xdg-open "$(xclip -clip sel -o | sed 's/shorts\//watch?v=/')"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Increase and decrease volume with Page Down and Page Up
+bindsym $mod+Next  exec ~/.config/i3/myScripts/volume_control.sh decrease
+bindsym $mod+Prior exec ~/.config/i3/myScripts/volume_control.sh increase
+
+# Increase and decrease brightness with Home and End
+bindsym $mod+Home exec xbacklight -inc 10 || ~/.config/i3/myScripts/brightnessControl.sh -inc
+bindsym $mod+End  exec xbacklight -dec 10 || ~/.config/i3/myScripts/brightnessControl.sh -dec
+
+mode "exit: [l]ogout, [r]eboot, [s]hutdown, [S]uspend, [L]ock, [t]urn off screen" {
+  bindsym l exec ~/.config/i3/sounds/shutdown.sh && i3-msg exit
+  bindsym r exec ~/.config/i3/sounds/shutdown.sh && systemctl reboot
+  bindsym s exec ~/.config/i3/sounds/shutdown.sh && systemctl poweroff
+
+  bindsym Shift+s exec i3-msg mode "default" && ~/.config/i3/myScripts/lock_screen.sh && systemctl suspend
+  bindsym Shift+l exec i3-msg mode "default" && ~/.config/i3/myScripts/lock_screen.sh
+  # Watch out: ffplay prevents the monitor from entering sleep mode
+  bindsym --release t exec i3-msg mode "default" && xset dpms force off
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym $mod+Shift+e mode "default"
+}
+bindsym $mod+Shift+e mode "exit: [l]ogout, [r]eboot, [s]hutdown, [S]uspend, [L]ock, [t]urn off screen"
+
+# Restart StatusBar everytime CapsLock gets pressed
+bindsym --release Caps_Lock exec bash -c "source ~/.config/i3/myScripts/refresh_blocks.sh && refresh_caps_lock_block"
+bindsym --release Num_Lock  exec bash -c "source ~/.config/i3/myScripts/refresh_blocks.sh && refresh_caps_lock_block"
+
+# Mount Documents
+bindsym --release $mod+Shift+m exec ~/github/My_Scripts/sh/mount_docs.sh
+
+# Dunst
+bindsym $smod+space exec dunstctl close
+# bindsym $smod+Shift+space exec dunstctl close-all
+bindsym $smod+Shift+space exec dunstctl history-pop
+bindsym $smod+period exec dunstctl context
+
+# Screenshots
+bindsym Print exec i3-scrot -d
+bindsym --release Shift+Print exec i3-scrot -s
+bindsym Control+Shift+Print exec i3-scrot -w
+bindsym Control+Print exec thunar ~/Pictures
+
+# Run/Stop conky
+bindsym $smod+c exec pgrep conky && killall conky || conky
+
+# Zoom/Magnify
+bindsym --release $mod+z exec ~/.config/i3/myScripts/zoomme.sh --floating
+# bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png
+bindsym --release $mod+Shift+z exec ~/.config/i3/myScripts/zoomme.sh
+bindsym --release $smod+z exec ~/.config/i3/myScripts/zoomme.sh -c
+
+# Wakit
+bindsym --release $mod+Shift+x exec --no-startup-id ~/github/wakit/wakit -d
+bindsym --release $mod+x exec --no-startup-id ~/github/wakit/wakit -m
+
+bindsym $mod+b exec ~/.config/i3/myScripts/bookmarks.sh
+bindsym $mod+Shift+b exec ~/github/My_Scripts/sh/search_internet.sh
+
+bindsym $smod+r exec pkill picom && sleep 0.5 && picom --daemon
+
+# bindsym $mod+Mod2+KP_1 command # Shortcut pressing Alt+1(Numpad) in the numeric keyboard
+
+# Auto execute apps at startup....
+# exec app_name --> Executes at startup
+# exec_always app_name --> Executes at startup and in every restart/reload of i3
+
+######################################################
+#                      EXECUTE                       #
+######################################################
+
+# Scripts
+exec_always ~/.config/i3/myScripts/wallpaper.sh
+exec --no-startup-id ~/apps/autorun.sh
+# Services
+# KDE authentication dialog
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+# GNOME authentication dialog
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+exec --no-startup-id setxkbmap es
+exec --no-startup-id numlockx on
+exec --no-startup-id dunst
+exec --no-startup-id pulseaudio --start
+exec --no-startup-id picom --daemon
+exec xfce4-clipman
+exec kdeconnect-indicator
+exec conky -c ~/.config/conky/conky.conf
+# Others
+exec_always --no-startup-id ~/.config/i3/sounds/login.sh
+
+######################################################
+#                       RULES                        #
+######################################################
+
+# Window rules (get the class with `xprop WM_CLASS`)
+assign [class="ffplay"] $workspace4
+assign [class="thunderbird-default"] $workspace10
+
+# Icons on the title bar (with Horizontal padding)
+for_window [all] title_window_icon padding 6px
+# Border
+for_window [all] border normal 3
+
+for_window [class="Yad"] floating enable
+for_window [class="Xmag"] floating enable
+# for_window [class="XXXXXXX"] floating enabled
+
+######################################################
+#                       THEME                        #
+######################################################
+
+# TokioNight
+# set $bg-color            #565f89
+# set $inactive-bg-color   #24283b
+# set $text-color          #c0caf5
+# set $inactive-text-color #676E7D
+# set $urgent-bg-color     #f7768e
+# # Indicates where the next window is goint to be tailed
+# set $divider_indicator   #9ece6a
+
+# Gruvbox
+set $bg-color            #504945
+set $inactive-bg-color   #282828
+set $text-color          #fbf1c7
+set $inactive-text-color #a89984
+set $urgent-bg-color     #cc241d
+# Indicates where the next window is goint to be tailed
+set $divider_indicator   #98971a
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          $divider_indicator
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $divider_indicator
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $divider_indicator
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $divider_indicator
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  status_command /usr/local/bin/i3blocks -c ~/.config/i3/i3blocks.conf
+  position top
+  tray_output primary
+  colors {
+    background $inactive-bg-color
+    separator $bg-color
+    #                  border             background         text
+    focused_workspace  $bg-color          $bg-color          $text-color
+    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+  }
+}
+
+######################################################
+#              WORKSPACES AND MONITORS               #
+######################################################
 set $workspace1 "1"
 set $workspace2 "2"
 set $workspace3 "3"
@@ -153,6 +332,7 @@ set $workspaceS10 "10s"
 # asign workspaces to monitor
 set $pm HDMI-A-0
 set $sm DisplayPort-0
+
 workspace $workspace1 output $pm
 workspace $workspace2 output $pm
 workspace $workspace3 output $pm
@@ -237,196 +417,3 @@ bindsym $smod+Shift+7 move container to workspace $workspaceS7
 bindsym $smod+Shift+8 move container to workspace $workspaceS8
 bindsym $smod+Shift+9 move container to workspace $workspaceS9
 bindsym $smod+Shift+0 move container to workspace $workspaceS10
-
-# Enable/Disable second monitor
-bindsym $smod+o exec BLOCK_BUTTON=1 ~/.config/i3/myScripts/monitor.sh && pkill -SIGRTMIN+1 i3blocks
-
-# Move workspaces between monitors
-bindsym $smod+Shift+h move workspace to output left
-bindsym $smod+Shift+l move workspace to output right
-bindsym $smod+Shift+k move workspace to output up
-bindsym $smod+Shift+j move workspace to output down
-
-# Swap workspaces
-bindsym $smod+s exec ~/.config/i3/myScripts/swap_workspaces.sh
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# Toggle Bloq Mayus as Control
-bindsym $mod+Escape exec ~/.config/i3/myScripts/toggle_bloq_mayus_control.sh
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# Increase and decrease volume with Page Down and Page Up
-bindsym $mod+Next  exec amixer -q set Master 5%- && $refresh_volume
-bindsym $mod+Prior exec amixer -q set Master 5%+ && $refresh_volume
-
-# Increase and decrease brightness with Home and End
-bindsym $mod+Home exec xbacklight -inc 10 || ~/.config/i3/myScripts/brightnessControl.sh -inc
-bindsym $mod+End  exec xbacklight -dec 10 || ~/.config/i3/myScripts/brightnessControl.sh -dec
-
-# Lock screen
-set $lock_screen (scrot - | convert - -blur 0x4 - | composite -gravity southeast ~/.config/i3/images/i3lock-overlay.png - /tmp/lock.png) && i3lock -i /tmp/lock.png
-set $shutdown_music ffplay ~/.config/i3/sounds/logout.ogg -autoexit -nodisp -loglevel quiet
-
-mode "exit: [l]ogout, [r]eboot, [s]hutdown, [S]uspend, [L]ock, [t]urn off screen" {
-  bindsym l exec $shutdown_music && i3-msg exit
-  bindsym r exec $shutdown_music && systemctl reboot
-  bindsym s exec $shutdown_music && systemctl poweroff
-  # Add delay, because systemctl suspend finishes before the pc suspends (asynchronous)
-  bindsym Shift+s exec i3-msg mode "default" && $lock_screen && systemctl suspend
-  bindsym Shift+l exec i3-msg mode "default" && $lock_screen
-  # Watch out: ffplay prevents the monitor from entering sleep mode
-  bindsym --release t exec i3-msg mode "default" && xset dpms force off
-
-  bindsym Escape mode "default"
-  bindsym Return mode "default"
-  bindsym $mod+Shift+e mode "default"
-}
-bindsym $mod+Shift+e mode "exit: [l]ogout, [r]eboot, [s]hutdown, [S]uspend, [L]ock, [t]urn off screen"
-
-# Restart StatusBar everytime CapsLock gets pressed
-bindsym --release Caps_Lock exec $refresh_caps_lock
-bindsym --release Num_Lock  exec $refresh_caps_lock
-
-# Mount Documents
-bindsym --release $mod+Shift+m exec ~/github/My_Scripts/sh/mount_docs.sh
-
-# Dunst
-bindsym $smod+space exec dunstctl close
-# bindsym $smod+Shift+space exec dunstctl close-all
-bindsym $smod+Shift+space exec dunstctl history-pop
-bindsym $smod+period exec dunstctl context
-
-# Screenshots
-bindsym Print exec i3-scrot -d
-bindsym --release Shift+Print exec i3-scrot -s
-bindsym Control+Shift+Print exec i3-scrot -w
-bindsym Control+Print exec thunar ~/Pictures
-
-# Run/Stop conky
-bindsym $smod+c exec pgrep conky && killall conky || conky
-
-# Zoom/Magnify
-bindsym --release $mod+z exec ~/.config/i3/myScripts/zoomme.sh --floating
-# bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png
-bindsym --release $mod+Shift+z exec ~/.config/i3/myScripts/zoomme.sh
-bindsym --release $smod+z exec ~/.config/i3/myScripts/zoomme.sh -c
-
-# Wakit
-bindsym --release $mod+Shift+x exec --no-startup-id ~/github/wakit/wakit -d
-bindsym --release $mod+x exec --no-startup-id ~/github/wakit/wakit -m
-
-bindsym $mod+b exec ~/.config/i3/myScripts/bookmarks.sh
-bindsym $mod+Shift+b exec ~/github/My_Scripts/sh/search_internet.sh
-
-bindsym $smod+r exec pkill picom && sleep 0.5 && picom --daemon
-
-# bindsym $mod+Mod2+KP_1 command # Shortcut pressing Alt+1(Numpad) in the numeric keyboard
-
-# Auto execute apps at startup....
-# exec app_name --> Executes at startup
-# exec_always app_name --> Executes at startup and in every restart/reload of i3
-
-# Scripts
-exec_always ~/.config/i3/myScripts/wallpaper.sh
-exec --no-startup-id ~/apps/autorun.sh
-# Services
-# KDE authentication dialog
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-# GNOME authentication dialog
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nm-applet
-exec --no-startup-id setxkbmap es
-exec --no-startup-id numlockx on
-exec --no-startup-id dunst
-exec --no-startup-id pulseaudio --start
-exec --no-startup-id picom --daemon
-exec xfce4-clipman
-exec kdeconnect-indicator
-exec conky -c ~/.config/conky/conky.conf
-# Others
-exec_always --no-startup-id ffplay ~/.config/i3/sounds/login.ogg -autoexit -nodisp -loglevel quiet
-
-# Window rules (get the class with `xprop WM_CLASS`)
-assign [class="ffplay"] $workspace4
-assign [class="thunderbird-default"] $workspace10
-
-# Icons on the title bar (with Horizontal padding)
-for_window [all] title_window_icon padding 6px
-# Border
-for_window [all] border normal 3
-
-for_window [class="Yad"] floating enable
-for_window [class="Xmag"] floating enable
-# for_window [class="XXXXXXX"] floating enabled
-
-# TokioNight
-# set $bg-color            #565f89
-# set $inactive-bg-color   #24283b
-# set $text-color          #c0caf5
-# set $inactive-text-color #676E7D
-# set $urgent-bg-color     #f7768e
-# # Indicates where the next window is goint to be tailed
-# set $divider_indicator   #9ece6a
-
-# Gruvbox
-set $bg-color            #504945
-set $inactive-bg-color   #282828
-set $text-color          #fbf1c7
-set $inactive-text-color #a89984
-set $urgent-bg-color     #cc241d
-# Indicates where the next window is goint to be tailed
-set $divider_indicator   #98971a
-
-# window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          $divider_indicator
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $divider_indicator
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $divider_indicator
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $divider_indicator
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-  status_command /usr/local/bin/i3blocks -c ~/.config/i3/i3blocks.conf
-  position top
-  tray_output primary
-  colors {
-    background $inactive-bg-color
-    separator $bg-color
-    #                  border             background         text
-    focused_workspace  $bg-color          $bg-color          $text-color
-    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-  }
-}

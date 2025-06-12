@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.config/i3/myScripts/refresh_blocks.sh
+
 STEP=5
 
 toggle_mute () {
@@ -45,3 +47,5 @@ if [[ "$STATUS" == "on" ]]; then
 else
   echo "<span foreground=\"$COLOR_OFF\"> $MIC_OFF </span>"
 fi
+
+refresh_mic_block

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.config/i3/myScripts/refresh_blocks.sh
+
 if [[ ! $(xrandr | grep "DisplayPort-0") ]]; then
   exit
 fi
@@ -27,3 +29,5 @@ if [[ $DP0_DISABLED == "on" ]] ; then
 else
   echo "<span foreground=\"$COLOR_OFF\"> $MONITOR_OFF </span>"
 fi
+
+refresh_monitor_block

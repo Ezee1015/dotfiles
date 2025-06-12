@@ -83,16 +83,19 @@ nnoremap <silent><C-Right> <C-w>l
 nnoremap <silent><C-Left> <C-w>h
 nnoremap <silent><C-Up> <C-w>k
 nnoremap <silent><C-Down> <C-w>j
+nnoremap <silent><C-l> <C-w>l
+nnoremap <silent><C-h> <C-w>h
+nnoremap <silent><C-k> <C-w>k
+nnoremap <silent><C-j> <C-w>j
 nmap <silent><S-k> :res -2<CR>
 nmap <silent><S-j> :res +2<CR>
 nmap <silent><S-l> :vertical resize +2<CR>
 nmap <silent><S-h> :vertical resize -2<CR>
 
-"" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
+"" Terminal
+tmap <ESC> <C-\><C-n>
+tmap ii <C-\><C-n>
+nmap <silent><leader>x :term<CR>
 
 " Format lines
 map <silent><leader>gj :join<CR>

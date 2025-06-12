@@ -1,7 +1,7 @@
 //@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
 @import "/usr/share/rofi/themes/gruvbox-dark.rasi"
 configuration {
-  modi: "run,drun,calc,filebrowser";
+  modi: "run,drun,calc,filebrowser,window";
 
   kb-row-up:                      "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
   kb-row-down:                    "Down,Control+j";

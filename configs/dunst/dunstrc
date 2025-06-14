@@ -276,7 +276,7 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#2b2b2b"
+    background = "#282828"
     foreground = "#ffffff"
     highlight  = "#458588"
     timeout = 8
@@ -285,7 +285,7 @@
     # script = ~/.config/dunst/normal_notification.sh
 
 [urgency_normal]
-    background = "#2b2b2b"
+    background = "#282828"
     foreground = "#ffffff"
     highlight  = "#458588"
     timeout = 8
@@ -296,8 +296,8 @@
 [urgency_critical]
     background  = "#900000"
     foreground  = "#ffffff"
-    frame_color = "#ff0000"
-    highlight   = "#d79921"
+    frame_color = "#cc241d"
+    highlight   = "#fe8019"
     timeout = 15
     # Icon for notifications with critical urgency, uncomment to enable
     icon = ~/.config/dunst/icons/critical.png

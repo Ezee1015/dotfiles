@@ -2,6 +2,7 @@
 
 source ~/.config/i3/scripts/refresh_blocks.sh
 
+VOLUME=$(amixer get Capture | awk -F"[][]" '/(Left|Mono):/ { print $2 }' | sed 's/%//')
 STEP=5
 
 toggle_mute () {
@@ -28,7 +29,7 @@ case $BLOCK_BUTTON in
       toggle_mute
     fi
 
-    amixer -q sset Capture ${STEP}%+
+    amixer -q sset Capture $(expr $VOLUME + $STEP)%
     ;;
 
   5) # scroll down, decrease
@@ -36,14 +37,14 @@ case $BLOCK_BUTTON in
       toggle_mute
     fi
 
-    amixer -q sset Capture ${STEP}%-
+    amixer -q sset Capture $(expr $VOLUME - $STEP)%
     ;;
 
 esac
 
 # Print status
 if [[ "$STATUS" == "on" ]]; then
-  echo "<span foreground=\"$COLOR_ON\"> $MIC_ON $(amixer get Capture | awk -F"[][]" '/(Left|Mono):/ { print $2 }') </span>"
+  echo "<span foreground=\"$COLOR_ON\"> $MIC_ON $VOLUME% </span>"
 else
   echo "<span foreground=\"$COLOR_OFF\"> $MIC_OFF </span>"
 fi

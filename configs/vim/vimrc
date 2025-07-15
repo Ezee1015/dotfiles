@@ -20,6 +20,7 @@ set undofile
 set undodir=~/.vim/undodir
 
 colorscheme habamax
+hi MatchParen guifg=#1c1c1c guibg=#5f8787 gui=reverse cterm=reverse
 
 "" Change between the block cursor and the vertical bar
 let &t_SI = "\e[6 q"

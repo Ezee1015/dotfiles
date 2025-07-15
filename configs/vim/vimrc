@@ -111,8 +111,8 @@ map <silent><leader><S-m> gU
 "" Increase or decrease number
 map ++ <C-a>
 map -- <C-x>
-vmap ** g<C-a>
-vmap __ g<C-x>
+vmap g++ g<C-a>
+vmap g-- g<C-x>
 
 "" Substitution
 nmap S :%s//g<Left><Left>

@@ -167,8 +167,8 @@ map('', '<leader>gq'    , 'g~'                               , { silent= true } 
 -- Aumenta o Disminuye el valor de un numero
 map('', '++'            , '<C-a>'                           , { }                             )
 map('', '--'            , '<C-x>'                           , { }                             )
-map('', '**'            , 'g<C-a>'                          , { }                             )
-map('', '__'            , 'g<C-x>'                          , { }                             )
+map('', 'g++'           , 'g<C-a>'                          , { }                             )
+map('', 'g--'           , 'g<C-x>'                          , { }                             )
 
 -- Atajo Sustituir
 map('n', 'S'             , ':%s//g<Left><Left>'              , { }                             )

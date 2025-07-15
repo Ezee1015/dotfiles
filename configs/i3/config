@@ -53,7 +53,7 @@ bindsym $mod+m exec BLOCK_BUTTON=1 ~/.config/i3/scripts/i3block_mic_volume.sh
 # Command for changing rofi's theme: rofi-theme-selector
 bindsym $mod+d exec $path_with_scripts rofi -show "run"
 bindsym $mod+Shift+d exec rofi -show "drun"
-bindsym $mod+Shift+f exec rofi -show "filebrowser"
+# bindsym $mod+Shift+f exec rofi -show "filebrowser"
 bindsym $mod+Mod2+KP_Subtract exec "LC_NUMERIC=en_US.UTF8 rofi -show calc -theme-str \\"listview {enabled: false;}\\" -calc-command \\"echo '{result}' | tr -d '\n' | xclip -selection clipboard\\" -no-history"
 bindsym $mod+minus exec rofi -show calc -calc-command "echo '{result}' | tr -d '\n' | xclip -selection clipboard"
 bindsym $mod+o exec --no-startup-id PATH="$PATH:$HOME/.config/i3/rofi-sound" rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"

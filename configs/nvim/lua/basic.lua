@@ -16,6 +16,7 @@ vim.opt.fillchars = {
   foldclose = "▸",
 }
 -- vim.o.foldmethod = "syntax" -- Maneja los folding según la sintaxis
+-- Remember to execute :mkspell! ~/.config/nvim/spell/es.utf-8.add to compile my custom dictonary
 vim.cmd "set spell! spelllang=es_es,en_us"
 vim.o.clipboard = "unnamedplus"-- Combina el Portapapeles de VIM con el del Sistema
 vim.o.lazyredraw = true -- Evita redibujado de ventanas innecesarios, ideal para cuanto se ejecutan macros. Para forzar el redibujado de una ventana, usar el comando /\s\+$//e<CR>'fdmf"redraw

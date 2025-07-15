@@ -128,7 +128,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Toggle Bloq Mayus as Control
-bindsym $mod+Escape exec ~/.config/i3/scripts/toggle_bloq_mayus_control.sh
+bindsym $mod+Escape exec ~/.config/i3/scripts/toggle_caps_lock_control.sh
 
 # Open YT Short into a normal mode
 bindsym $smod+Shift+s exec xdg-open "$(xclip -clip sel -o | sed 's/shorts\//watch?v=/')"
@@ -227,6 +227,7 @@ bindsym $smod+r exec pkill picom && sleep 0.5 && picom --daemon
 
 # Scripts
 exec_always ~/.config/i3/scripts/wallpaper.sh
+exec ~/.config/i3/scripts/toggle_caps_lock_control.sh
 exec --no-startup-id ~/apps/autorun.sh
 # Services
 # KDE authentication dialog

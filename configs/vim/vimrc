@@ -70,6 +70,7 @@ let mapleader=" "
 "" Exit insert
 imap ii <Esc>
 imap II <Esc>
+set ttimeoutlen=50
 
 "" Split
 noremap <silent><leader>h :<C-u>split<CR>

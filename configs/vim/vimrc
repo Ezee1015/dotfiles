@@ -9,6 +9,8 @@ set smartindent
 set termguicolors
 set noshowmode
 set fillchars+=vert:█ " Change \| to █ in the vertical split
+setlocal spell! spelllang=es_es,en_us
+set completeopt=menu,menuone,noinsert,noselect
 
 filetype on
 filetype plugin on
@@ -150,3 +152,8 @@ vnoremap <S-h> <gv
 "" Map cs and cd to g; and g,
 nmap cs g;
 nmap cd g,
+
+"" Spell check
+map <leader>z z=
+nmap <silent><leader>o :set spell<CR>
+nmap <silent><leader><S-o> :set nospell!<CR>

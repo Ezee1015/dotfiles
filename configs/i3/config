@@ -12,6 +12,9 @@ gaps outer 0px
 # Enable gaps when there's more than one window on the workspace
 smart_gaps on
 
+# Don't exit fullscreen after creating a popup window
+focus_on_window_activation none
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 

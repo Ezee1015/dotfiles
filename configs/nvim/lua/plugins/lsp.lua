@@ -288,6 +288,8 @@ return {
     cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 
     keys = {
+      { 'gd'        , "<cmd>lua vim.lsp.buf.definition()<cr>", desc="Ir a la definición" },
+      { 'gr'        , "<cmd>lua vim.lsp.buf.references()<cr>" , desc="Ir a las referencias" },
       { "<leader>di", "<cmd>lua vim.lsp.buf.hover()<CR>", desc="Información del objeto"}
     }
   },

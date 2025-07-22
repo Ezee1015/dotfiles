@@ -201,7 +201,7 @@ bindsym Control+Print exec thunar ~/Pictures
 bindsym $smod+c exec pgrep conky && killall conky || conky
 
 # Zoom/Magnify
-bindsym --release $mod+z exec ~/.config/i3/scripts/zoomme.sh --floating
+bindsym --release $mod+z exec ~/.config/i3/scripts/motaza.sh --floating
 # bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png
 bindsym --release $mod+Shift+z exec ~/.config/i3/scripts/zoomme.sh
 bindsym --release $smod+z exec ~/.config/i3/scripts/zoomme.sh -c

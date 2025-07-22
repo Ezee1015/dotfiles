@@ -110,6 +110,13 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = remove_nu_nru_terminal,
 })
 
+local open_quickfix = vim.api.nvim_create_augroup("open_quickfix", { clear = true })
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+  pattern = "[^l]*",
+  command = "cwindow",
+  group = open_quickfix,
+})
+
 vim.cmd ([[
   " Cambia entre el cursor cuadrado ( [] ) en modo normal al cursor de barrita ( | ) en el modo de insercion
   let &t_SI = "\e[6 q"

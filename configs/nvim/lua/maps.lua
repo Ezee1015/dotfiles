@@ -186,8 +186,11 @@ map('v', 'rr'            , '!sort -R<CR>'                    , { }              
 map('n', '<leader>ç'     , ':lua Programar()<CR>'            , { silent= true }                )
 
 -- Compile
-map('n', '<leader>cc'    , ':lua Procesar("ejecutar")<CR>'   , { }                             )
-map('n', '<leader>c'     , ':lua Procesar("compilar")<CR>'   , { }                             )
+-- map('n', '<leader>c'     , ':setlocal makeprg=\'\'<Left>'    , { }                             )
+-- map('n', '<leader>c'     , ':compiler '                      , { }                             )
+map('n', '<leader>c'     , ':lua Procesar("ejecutar")<CR>'   , { }                             )
+map('n', '<leader>cc'    , ':w<CR>:make<CR>'                 , { }                             )
+map('n', '<leader>cx'    , ':w<CR>:term time make run<CR>'   , { }                             )
 
 -- Tabs,  buffers and files
 map('n', '<C-t><TAB>'    , 'gt'                              , { silent= true, noremap= true } )

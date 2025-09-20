@@ -31,3 +31,5 @@ require("lazy_init")
 require("floaterm")
 -- lua/marklink.lua
 require("marklink")
+-- lua/numbertoggle.lua
+require("numbertoggle")

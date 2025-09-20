@@ -255,6 +255,8 @@ exec_always --no-startup-id ~/.config/i3/sounds/login.sh
 ######################################################
 
 # Window rules (get the class with `xprop WM_CLASS`)
+assign [class="librewolf"] $workspace2
+assign [class="Brave-browser"] $workspace2
 assign [class="ffplay"] $workspace4
 assign [class="thunderbird-default"] $workspace10
 
@@ -315,25 +317,27 @@ bar {
 ######################################################
 #              WORKSPACES AND MONITORS               #
 ######################################################
-set $workspace1 "1"
-set $workspace2 "2"
-set $workspace3 "3"
-set $workspace4 "4"
-set $workspace5 "5"
-set $workspace6 "6"
-set $workspace7 "7"
-set $workspace8 "8"
-set $workspace9 "9"
-set $workspace10 "Mail"
-set $workspaceS1 "1s"
-set $workspaceS2 "2s"
-set $workspaceS3 "3s"
-set $workspaceS4 "4s"
-set $workspaceS5 "5s"
-set $workspaceS6 "6s"
-set $workspaceS7 "7s"
-set $workspaceS8 "8s"
-set $workspaceS9 "9s"
+#
+# 10 - Social
+set $workspace1 "1  "
+set $workspace2 "2 󰈹 "
+set $workspace3 "3  "
+set $workspace4 "4  "
+set $workspace5 "5  "
+set $workspace6 "6  "
+set $workspace7 "7  "
+set $workspace8 "8  "
+set $workspace9 "9  "
+set $workspace10 "10  "
+set $workspaceS1 "11  "
+set $workspaceS2 "12  "
+set $workspaceS3 "13  "
+set $workspaceS4 "14  "
+set $workspaceS5 "15  "
+set $workspaceS6 "16  "
+set $workspaceS7 "17  "
+set $workspaceS8 "18  "
+set $workspaceS9 "19  "
 set $workspaceS10 "10s"
 
 # asign workspaces to monitor

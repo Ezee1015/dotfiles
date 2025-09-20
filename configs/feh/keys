@@ -1,7 +1,7 @@
 zoom_fit F
 
-next_img l
-prev_img h
+next_img l Right space n enter
+prev_img h Left S-space p
 
-zoom_in k
-zoom_out j
+zoom_in k plus
+zoom_out j minus

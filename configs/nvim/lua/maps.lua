@@ -113,10 +113,10 @@ map('n', '<leader>h'     , ':<C-u>split<CR>'                 , { silent= true, n
 map('n', '<leader>v'     , ':<C-u>vsplit<CR>'                , { silent= true, noremap= true } )
 
 -- Remapea ESC a ii para Salir del Modo Insertar
-map('i', 'ii'            , '<ESC>'                           , {}                              )
-map('i', 'Ii'            , '<ESC>'                           , {}                              )
-map('i', 'iI'            , '<ESC>'                           , {}                              )
-map('i', 'II'            , '<ESC>'                           , {}                              )
+map('i', 'ii'            , '<ESC>'                           , { noremap = true }              )
+map('i', 'Ii'            , '<ESC>'                           , { noremap = true }              )
+map('i', 'iI'            , '<ESC>'                           , { noremap = true }              )
+map('i', 'II'            , '<ESC>'                           , { noremap = true }              )
 
 -- Agrega una Separación en el Undo
 map('i', ','             , ',<C-g>u'                         , { noremap= true }               )

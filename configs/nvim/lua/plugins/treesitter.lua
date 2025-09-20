@@ -4,7 +4,7 @@ return {
 
 	{"nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = { "c", "cpp", "lua", "java", "python", "bash", "html", "css", "javascript", "sql" },
+      ensure_installed = { "c", "cpp", "lua", "java", "python", "bash", "html", "css", "javascript", "sql", "markdown", "markdown_inline" },
       auto_install = true,
       highlight = {
         enable = true,

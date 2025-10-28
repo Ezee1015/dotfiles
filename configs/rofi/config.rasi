@@ -1,5 +1,8 @@
-//@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
-@import "/usr/share/rofi/themes/gruvbox-dark.rasi"
+// @theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+// @import "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
+// @import "themes/dracula.rasi"
+@import "themes/gruvbox.rasi"
+
 configuration {
   modi: "run,drun,calc,filebrowser,window";
 

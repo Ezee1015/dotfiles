@@ -267,7 +267,7 @@ assign [class="thunderbird-default"] $workspace10
 # Icons on the title bar (with Horizontal padding)
 for_window [all] title_window_icon padding 6px
 # Border
-for_window [all] border normal 3
+for_window [all] border normal 0
 
 for_window [class="Yad"] floating enable
 for_window [class="Xmag"] floating enable

@@ -1,6 +1,9 @@
 ######################################################
 #                       BASIC                        #
 ######################################################
+# If i swap mod and smod (because super makes more sense as a mod key, but alt
+# is more ergonomic for myself), don't forget to add REMAP_SUPER_ALT in
+# ~/.config/i3/scripts/toggle_caps_lock_control.sh
 set $mod Mod1
 set $smod Mod4
 

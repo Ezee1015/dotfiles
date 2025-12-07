@@ -107,6 +107,7 @@ install_i3() {
   read
 
   ln -sTf "$REPO_DIR/configs/i3" ~/.config/i3
+  ln -sTf "$REPO_DIR/configs/picom" ~/.config/picom
 
   # Install scrot
   echo "- Installing scrot..."

@@ -67,5 +67,7 @@ return {
       { "<F10>", ":CarbonNowSh<CR>", mode="v"},
       { "<F10>", "mfggVG:CarbonNowSh<CR>`fdmf", mode="n"}
     },
-  }
+  },
+
+  "tpope/vim-sleuth"
 }

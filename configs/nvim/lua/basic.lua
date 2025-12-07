@@ -34,9 +34,9 @@ vim.o.wildignore=vim.o.wildignore.."*.o,*.obj,.git,*.rbc,*.pyc,__pycache__"
 -- vim.opt.foldcolumn = "1"
 
 -- Tabs. May be overridden by autocmd rules
-vim.o.tabstop     = 2
+vim.o.tabstop     = 4
 vim.o.softtabstop = 0
-vim.o.shiftwidth  = 2
+vim.o.shiftwidth  = 4
 vim.o.expandtab   = true
 
 

@@ -28,6 +28,19 @@ function initUi()
   app.registerUi({["menu"] = "Solid/Dashed/Dotted",          ["callback"] = "linestyle",   ["accelerator"] = "e"});
   app.registerUi({["menu"] = "Line/Rectangle/Arrow/Ellipse", ["callback"] = "drawingtype", ["accelerator"] = "w"});
   app.registerUi({["menu"] = "Select Rectangle/Region",      ["callback"] = "select",      ["accelerator"] = "<Alt>2"});
+
+  -- COLORS SHORTCUTS
+  -- app.registerUi({["menu"] = "Color #1", ["callback"] = "color1", ["accelerator"] = "1"});
+  -- app.registerUi({["menu"] = "Color #2", ["callback"] = "color2", ["accelerator"] = "2"});
+  -- app.registerUi({["menu"] = "Color #3", ["callback"] = "color3", ["accelerator"] = "3"});
+  -- app.registerUi({["menu"] = "Color #4", ["callback"] = "color4", ["accelerator"] = "4"});
+  -- app.registerUi({["menu"] = "Color #5", ["callback"] = "color5", ["accelerator"] = "5"});
+  -- app.registerUi({["menu"] = "Color #6", ["callback"] = "color6", ["accelerator"] = "6"});
+  -- app.registerUi({["menu"] = "Color #7", ["callback"] = "color7", ["accelerator"] = "7"});
+  -- app.registerUi({["menu"] = "Color #8", ["callback"] = "color8", ["accelerator"] = "8"});
+  -- app.registerUi({["menu"] = "Color #9", ["callback"] = "color9", ["accelerator"] = "9"});
+  -- app.registerUi({["menu"] = "Color #0", ["callback"] = "color0", ["accelerator"] = "0"});
+
   setDefaults()
 end
 
@@ -51,6 +64,35 @@ function tool()
   app.uiAction({["action"] = "ACTION_TOOL_" .. toolList[currentTool]})
   lastClass = "tool"
 end
+
+-- COLORS SHORTCUTS
+-- local colorList = {
+--   {"white", 0xffffff},
+--   {"gray", 0x808080},
+--   {"lightblue", 0x00c0ff},
+--   {"red", 0xff0000},
+--   {"lightgreen", 0x00ff00},
+--   {"orange", 0xff8000},
+--   {"black", 0x000000},
+--   {"green", 0x008000},
+--   {"blue", 0x3333cc},
+--   -- {"magenta", 0xff00ff},
+--   {"yellow", 0xffff00},
+-- }
+--
+-- function setColor(index)
+--   app.changeToolColor({["color"] = colorList[index][2], ["selection"] = true})
+-- end
+-- function color1() setColor(1) end
+-- function color2() setColor(2) end
+-- function color3() setColor(3) end
+-- function color4() setColor(4) end
+-- function color5() setColor(5) end
+-- function color6() setColor(6) end
+-- function color7() setColor(7) end
+-- function color8() setColor(8) end
+-- function color9() setColor(9) end
+-- function color0() setColor(10) end
 
 function select()
   if (lastClass == "select") then

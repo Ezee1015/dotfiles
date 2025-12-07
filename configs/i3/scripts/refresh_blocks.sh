@@ -1,5 +1,9 @@
 #!/bin/bash
 
+refresh_playing_block() {
+  pkill -SIGRTMIN+5 i3blocks
+}
+
 refresh_volume_block() {
   pkill -SIGRTMIN+2 i3blocks
 }

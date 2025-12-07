@@ -32,15 +32,17 @@ set $path_with_scripts PATH="$PATH:$HOME/apps:/usr/local/bin"
 #                      BINDINGS                      #
 ######################################################
 
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_volume_block
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_volume_block
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_volume_block
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_volume_block
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+# XF86 keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_control.sh increase
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_control.sh decrease
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_control.sh mute
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec --no-startup-id ~/.config/i3/scripts/playing_control.sh play-pause
+bindsym XF86AudioPause exec --no-startup-id ~/.config/i3/scripts/playing_control.sh play-pause
+bindsym XF86AudioNext exec --no-startup-id ~/.config/i3/scripts/playing_control.sh next-song
+bindsym XF86AudioPrev exec --no-startup-id ~/.config/i3/scripts/playing_control.sh previous-song
+bindsym XF86AudioStop exec --no-startup-id ~/.config/i3/scripts/playing_control.sh stop
+bindsym XF86Tools exec --no-startup-id ~/.config/i3/scripts/playing_control.sh next-player
 
 # start a terminal
 bindsym $mod+Return exec /usr/local/bin/alacritty || i3-sensible-terminal
@@ -232,6 +234,7 @@ bindsym $smod+r exec pkill picom && sleep 0.5 && picom --daemon
 # Scripts
 exec_always ~/.config/i3/scripts/wallpaper.sh
 exec ~/.config/i3/scripts/toggle_caps_lock_control.sh
+exec --no-startup-id ~/.config/i3/scripts/playing_daemon_i3block.sh
 exec --no-startup-id ~/apps/autorun.sh
 # Services
 # KDE authentication dialog
@@ -244,6 +247,7 @@ exec --no-startup-id numlockx on
 exec --no-startup-id dunst
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id picom --daemon
+exec --no-startup-id playerctld daemon
 exec xfce4-clipman
 exec kdeconnect-indicator
 exec conky -c ~/.config/conky/conky.conf

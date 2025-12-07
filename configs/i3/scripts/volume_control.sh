@@ -35,17 +35,17 @@ mute() {
 }
 
 error() {
-  echo "You have to provide: increase, decrease or mute"
-  exit 1
+    echo "You have to provide: increase, decrease or mute"
+    exit 1
 }
 
 if [[ $# -ne 1 ]]; then
-  error
+    error
 fi
 
 case "$1" in
-  "increase") increase ;;
-  "decrease") decrease ;;
-  "mute")     mute     ;;
-  *)          error    ;;
+    "increase") increase ;;
+    "decrease") decrease ;;
+    "mute")     mute     ;;
+    *)          error    ;;
 esac

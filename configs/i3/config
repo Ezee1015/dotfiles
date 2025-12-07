@@ -215,10 +215,11 @@ bindsym $smod+c exec pgrep conky && killall conky || conky
 # To take out a window from the scratchpad, you have to press $mod+Shift+Space (toggle floating)
 
 # Zoom/Magnify
-bindsym --release $mod+z exec ~/.config/i3/scripts/motaza.sh --floating
-# bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png
-bindsym --release $mod+Shift+z exec ~/.config/i3/scripts/motaza.sh
+bindsym --release $mod+z exec ~/.config/i3/scripts/motaza.sh
+bindsym --release $mod+Shift+z exec ~/.config/i3/scripts/motaza.sh --floating
 bindsym --release $smod+z exec ~/.config/i3/scripts/motaza.sh -c
+bindsym --release $smod+Shift+z exec ~/github/external/boomer/boomer
+# bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png
 
 # Wakit
 bindsym --release $mod+Shift+x exec --no-startup-id ~/github/wakit/wakit -d

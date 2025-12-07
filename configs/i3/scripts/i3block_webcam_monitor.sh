@@ -16,14 +16,14 @@ for WC in "${WEBCAMS[@]}"; do
 
     if [[ "$WC" != "$FIRST" ]] ; then echo -n "<span foreground=\"$DIVIDER_COLOR\"> | </span>"; fi
 
-    echo -n "<span foreground=\"$WEBCAM_ON\">$WEBCAM_ICON"
+    echo -n "<span background=\"$WEBCAM_ON_BG\" foreground=\"$WEBCAM_ON_FG\"> $WEBCAM_ICON"
     # If there's more than 1 camera, specify its ID from /dev/video[ID]
     if [[ $WEBCAMS_LEN -gt 1 ]]; then
       WC_ID=$(echo $WC | grep -o -E '[0-9]+')
       echo -n "($WC_ID)"
     fi
     ##
-    echo -n " $APP_NAME</span>"
+    echo -n " $APP_NAME </span>"
   fi
 done
 echo ""

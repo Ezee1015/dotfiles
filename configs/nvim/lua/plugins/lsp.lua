@@ -42,22 +42,14 @@ local function lspconfig_config()
   })
 
   -- LSP Initialization (config)
-  require'lspconfig'.clangd.setup({})
-  require'lspconfig'.hls.setup({})
-  require'lspconfig'.pylsp.setup{
-    settings = {
-      pylsp = {
-        plugins = {
-          pycodestyle = {
-            ignore = {'E501'}, -- Disable 'line too long'
-            maxLineLength = 100
-          }
-        }
-      }
-    }
-  }
+  vim.lsp.enable("lua_ls")
+  vim.lsp.enable("clangd")
+  vim.lsp.enable("hls")
+  vim.lsp.enable("rust_analyzer")
+  vim.lsp.enable("jdtls")
+  vim.lsp.enable("pylsp")
 
-  require('lspconfig')['jdtls'].setup({
+  vim.lsp.config('jdtls', {
     settings = {
       signatureHelp = {enabled = true}, contentProvider = {preferred = 'fernflower'}
     },
@@ -69,7 +61,7 @@ local function lspconfig_config()
   })
 
   -- Lua-Language-Server
-  require'lspconfig'.lua_ls.setup {
+  vim.lsp.config("lua_lsp", {
     settings = {
       Lua = {
         runtime = {
@@ -88,7 +80,20 @@ local function lspconfig_config()
         },
       },
     },
-  }
+  })
+
+  vim.lsp.config("pylsp", {
+    settings = {
+      pylsp = {
+        plugins = {
+          pycodestyle = {
+            ignore = {'E501'}, -- Disable 'line too long'
+            maxLineLength = 100
+          }
+        }
+      }
+    }
+  })
 end
 
 local lsp_signature_opts = {
@@ -237,7 +242,8 @@ local function cmp_config ()
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       { name = 'buffer' },
-      { name = 'mkdnflow' },
+      -- { name = 'mkdnflow' },
+      { name = 'render-markdown' },
     }
   })
 

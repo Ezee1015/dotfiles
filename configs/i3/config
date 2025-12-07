@@ -268,8 +268,8 @@ exec_always --no-startup-id ~/.config/i3/sounds/login.sh
 ######################################################
 
 # Window rules (get the class with `xprop WM_CLASS`)
-assign [class="librewolf"] $workspace2
-assign [class="Brave-browser"] $workspace2
+assign [class="librewolf"] $workspace3
+assign [class="Brave-browser"] $workspace3
 assign [class="ffplay"] $workspace4
 assign [class="thunderbird-default"] $workspace10
 
@@ -352,16 +352,16 @@ bar {
 #
 # 10 - Social
 set $workspace1 "1  "
-set $workspace2 "2 󰈹 "
-set $workspace3 "3  "
+set $workspace2 "2  "
+set $workspace3 "3 󰈹 "
 set $workspace4 "4  "
-set $workspace5 "5  "
+set $workspace5 "5  "
 set $workspace6 "6  "
 set $workspace7 "7  "
 set $workspace8 "8  "
 set $workspace9 "9  "
 set $workspace10 "10  "
-set $workspaceS1 "11  "
+set $workspaceS1 "11  "
 set $workspaceS2 "12  "
 set $workspaceS3 "13  "
 set $workspaceS4 "14  "
@@ -370,7 +370,6 @@ set $workspaceS6 "16  "
 set $workspaceS7 "17  "
 set $workspaceS8 "18  "
 set $workspaceS9 "19  "
-set $workspaceS10 "10s"
 
 # asign workspaces to monitor
 set $pm HDMI-A-0
@@ -395,49 +394,49 @@ workspace $workspaceS6 output $sm
 workspace $workspaceS7 output $sm
 workspace $workspaceS8 output $sm
 workspace $workspaceS9 output $sm
-workspace $workspaceS10 output $sm
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
-bindsym $mod+Mod2+KP_1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
-bindsym $mod+Mod2+KP_2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
-bindsym $mod+Mod2+KP_3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+Mod2+KP_4 workspace $workspace4
 bindsym $mod+5 workspace $workspace5
-bindsym $mod+Mod2+KP_5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
-bindsym $mod+Mod2+KP_6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
-bindsym $mod+Mod2+KP_7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
-bindsym $mod+Mod2+KP_8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
-bindsym $mod+Mod2+KP_9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 bindsym $mod+Mod2+KP_0 workspace $workspace10
+
+bindsym $mod+Mod2+KP_1 workspace $workspace1
+bindsym $mod+Mod2+KP_2 workspace $workspace2
+bindsym $mod+Mod2+KP_3 workspace $workspace3
+bindsym $mod+Mod2+KP_4 workspace $workspace4
+bindsym $mod+Mod2+KP_5 workspace $workspace5
+bindsym $mod+Mod2+KP_6 workspace $workspace6
+bindsym $mod+Mod2+KP_7 workspace $workspace7
+bindsym $mod+Mod2+KP_8 workspace $workspace8
+bindsym $mod+Mod2+KP_9 workspace $workspace9
+
 bindsym $smod+1 workspace $workspaceS1
-bindsym $smod+Mod2+KP_1 workspace $workspaceS1
 bindsym $smod+2 workspace $workspaceS2
-bindsym $smod+Mod2+KP_2 workspace $workspaceS2
 bindsym $smod+3 workspace $workspaceS3
-bindsym $smod+Mod2+KP_3 workspace $workspaceS3
 bindsym $smod+4 workspace $workspaceS4
-bindsym $smod+Mod2+KP_4 workspace $workspaceS4
 bindsym $smod+5 workspace $workspaceS5
-bindsym $smod+Mod2+KP_5 workspace $workspaceS5
 bindsym $smod+6 workspace $workspaceS6
-bindsym $smod+Mod2+KP_6 workspace $workspaceS6
 bindsym $smod+7 workspace $workspaceS7
-bindsym $smod+Mod2+KP_7 workspace $workspaceS7
 bindsym $smod+8 workspace $workspaceS8
-bindsym $smod+Mod2+KP_8 workspace $workspaceS8
 bindsym $smod+9 workspace $workspaceS9
+
+bindsym $smod+Mod2+KP_1 workspace $workspaceS1
+bindsym $smod+Mod2+KP_2 workspace $workspaceS2
+bindsym $smod+Mod2+KP_3 workspace $workspaceS3
+bindsym $smod+Mod2+KP_4 workspace $workspaceS4
+bindsym $smod+Mod2+KP_5 workspace $workspaceS5
+bindsym $smod+Mod2+KP_6 workspace $workspaceS6
+bindsym $smod+Mod2+KP_7 workspace $workspaceS7
+bindsym $smod+Mod2+KP_8 workspace $workspaceS8
 bindsym $smod+Mod2+KP_9 workspace $workspaceS9
-bindsym $smod+0 workspace $workspaceS10
-bindsym $smod+Mod2+KP_0 workspace $workspaceS10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -450,6 +449,18 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
+
+bindsym $mod+Shift+Mod2+KP_End move container to workspace $workspace1
+bindsym $mod+Shift+Mod2+KP_Down move container to workspace $workspace2
+bindsym $mod+Shift+Mod2+KP_Next move container to workspace $workspace3
+bindsym $mod+Shift+Mod2+KP_Left move container to workspace $workspace4
+bindsym $mod+Shift+Mod2+KP_Begin move container to workspace $workspace5
+bindsym $mod+Shift+Mod2+KP_Right move container to workspace $workspace6
+bindsym $mod+Shift+Mod2+KP_Home move container to workspace $workspace7
+bindsym $mod+Shift+Mod2+KP_Up move container to workspace $workspace8
+bindsym $mod+Shift+Mod2+KP_Prior move container to workspace $workspace9
+bindsym $mod+Shift+Mod2+KP_Insert move container to workspace $workspace10
+
 bindsym $smod+Shift+1 move container to workspace $workspaceS1
 bindsym $smod+Shift+2 move container to workspace $workspaceS2
 bindsym $smod+Shift+3 move container to workspace $workspaceS3
@@ -459,4 +470,13 @@ bindsym $smod+Shift+6 move container to workspace $workspaceS6
 bindsym $smod+Shift+7 move container to workspace $workspaceS7
 bindsym $smod+Shift+8 move container to workspace $workspaceS8
 bindsym $smod+Shift+9 move container to workspace $workspaceS9
-bindsym $smod+Shift+0 move container to workspace $workspaceS10
+
+bindsym $smod+Shift+Mod2+KP_End move container to workspace $workspaceS1
+bindsym $smod+Shift+Mod2+KP_Down move container to workspace $workspaceS2
+bindsym $smod+Shift+Mod2+KP_Next move container to workspace $workspaceS3
+bindsym $smod+Shift+Mod2+KP_Left move container to workspace $workspaceS4
+bindsym $smod+Shift+Mod2+KP_Begin move container to workspace $workspaceS5
+bindsym $smod+Shift+Mod2+KP_Right move container to workspace $workspaceS6
+bindsym $smod+Shift+Mod2+KP_Home move container to workspace $workspaceS7
+bindsym $smod+Shift+Mod2+KP_Up move container to workspace $workspaceS8
+bindsym $smod+Shift+Mod2+KP_Prior move container to workspace $workspaceS9

@@ -8,7 +8,7 @@ local currentDrawingtype = 1 -- default (freehand)
 local currentLinestyle = 1   -- plain (continuous line)
 
 local toolList = {"HAND", "PEN"} -- "HIGHLIGHTER", "ERASER"
-local drawingtypeList = {"TOOL_DRAW_RECT", "TOOL_DRAW_COORDINATE_SYSTEM", "RULER", "TOOL_DRAW_ELLIPSE", "SHAPE_RECOGNIZER"} -- "TOOL_DEFAULT",
+local drawingtypeList = {"SHAPE_RECOGNIZER", "TOOL_DRAW_RECT", "TOOL_DRAW_COORDINATE_SYSTEM", "RULER", "TOOL_DRAW_ELLIPSE"} -- "TOOL_DEFAULT",
 local selectList = {"RECT", "REGION"}
 local linestyleList = {"PLAIN", "DASH"} -- , "DOT"
 local lastClass = "select" -- last thing used: "tool" or "select"

@@ -209,6 +209,11 @@ bindsym Control+Print exec thunar ~/Pictures
 # Run/Stop conky
 bindsym $smod+c exec pgrep conky && killall conky || conky
 
+# Scratchpad
+# bindsym $mod+Shift+masculine move scratchpad
+# bindsym $mod+masculine scratchpad show
+# To take out a window from the scratchpad, you have to press $mod+Shift+Space (toggle floating)
+
 # Zoom/Magnify
 bindsym --release $mod+z exec ~/.config/i3/scripts/motaza.sh --floating
 # bindsym --release $mod+Shift+z exec rm /tmp/img.png & scrot -s -F /tmp/img.png && feh /tmp/img.png

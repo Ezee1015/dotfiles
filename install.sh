@@ -101,7 +101,7 @@ install_dunst() {
 }
 
 install_i3() {
-  echo "- Install for i3: sudo apt install i3-wm i3lock imagemagick numlockx lxappearance pavucontrol lm-sensors thunar breeze-icon-theme breeze-cursor-theme scrot xfce4-clipman-plugin perl build-essential acpi network-manager-gnome sqlite3 ffmpeg gvfs gvfs-backends playerctl picom lightdm-settings jq"
+  echo "- Install for i3: sudo apt install i3-wm imagemagick numlockx lxappearance pavucontrol lm-sensors thunar breeze-icon-theme breeze-cursor-theme scrot xfce4-clipman-plugin perl build-essential acpi network-manager-gnome sqlite3 ffmpeg gvfs gvfs-backends playerctl picom lightdm-settings jq"
   echo "- For Qt compatibility install: sudo apt install qt5ct qt5-style-plugins"
   echo -e "\n\n Press enter when ready..."
   read
@@ -125,6 +125,20 @@ install_i3() {
   fi
   ./autogen.sh && ./configure && make && sudo make install
   cd ../..
+
+  # Install i3lock
+  echo "- Installing i3lock..."
+  cd compiled
+  if [[ -d "i3lock" ]] ; then
+    cd i3lock && git pull
+  else
+    sudo apt install libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-x11-dev libev-dev libpam-dev -y
+    git clone https://github.com/Ezee1015/i3lock
+    cd i3lock
+  fi
+  rm -rf build/
+  mkdir -p build && cd build/ && meson setup -Dprefix=/usr && sudo ninja install
+  cd ../../..
 
   # Install font
   echo "- Installing fonts..."

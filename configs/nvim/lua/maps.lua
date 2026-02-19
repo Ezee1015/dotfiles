@@ -92,6 +92,8 @@ end
 -- "*****************************************************************************
 -- "" Mappings
 -- "*****************************************************************************
+
+-- Center the line when jumping through the results
 map('n', 'n'             , 'nzzzv'                           , { noremap= true }               )
 map('n', 'N'             , 'Nzzzv'                           , { noremap= true }               )
 
@@ -148,6 +150,10 @@ map('n', '<S-j>'         , ':res +2<CR>'                     , { }              
 -- Maximiza y Restaurar una ventana
 map('n', '<leader>o'     , '<C-w>='                          , { silent= true, noremap= true } )
 map('n', '<leader>O'     , '<C-w>|<C-W>_'                    , { silent= true, noremap= true } )
+
+-- New line while in insert mode
+map('i', '<S-CR>'        , '<ESC>O'                          , { silent= true, noremap= true } )
+map('i', '<C-CR>'        , '<ESC>o'                          , { silent= true, noremap= true } )
 
 -- Junta y divide lineas
 map('n', 'Q'             , 'gq'                              , { }                             )

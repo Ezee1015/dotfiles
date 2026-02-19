@@ -189,45 +189,47 @@
 
 ### Básicos
 
-|      Atajo      | Significado                                                                                      |
-|:---------------:|--------------------------------------------------------------------------------------------------|
-|     **`i`**     | Entra en Insertar antes del cursor                                                               |
-|     **`ii`**    | Sale del modo Insertar                                                                           |
-|     **`I`**     | Entra en Insertar al Principio de la linea                                                       |
-|     **`a`**     | Entra en Insertar después del cursor                                                             |
-|     **`A`**     | Entra en Insertar al Final de la Linea                                                           |
-|     **`/`**     | Permite buscar texto. Con **`n`** y **`N`** va al siguiente y anterior resultado respectivamente |
-|     **`?`**     | Lo mismo que **`/`** pero con en sentido contrario                                               |
-|     **`yy`**    | Copia una Linea                                                                                  |
-|     **`dd`**    | Elimina (Corta) una Linea                                                                        |
-|     **`p`**     | Pega el contenido abajo o a la derecha del cursor                                                |
-|     **`P`**     | Como ‘p’ pero en la linea de arriba o antes del cursor                                           |
-|     **`⎵p`**    | En visual mode, pega lo que se copio, sin que sea reemplazado por lo que se eliminó              |
-|     **`u`**     | Deshacer                                                                                         |
-|  **`[Ctrl] r`** | Rehacer                                                                                          |
-|     **`v`**     | Modo Visual                                                                                      |
-|     **`V`**     | Modo Visual Line                                                                                 |
-|  **`[Ctrl] v`** | Modo Visual Block                                                                                |
-|     **`R`**     | Modo Reemplazo                                                                                   |
-|     **`gv`**    | Vuelve al ultimo texto seleccionado en Visual Mode                                               |
-|     **`gi`**    | Vuelve al ultima linea en la que estuvo con modo Insert                                          |
-|     **`⎵h`**    | Dividir Horizontalmente                                                                          |
-|     **`⎵v`**    | Dividir Verticalmente                                                                            |
-|     **`⎵q`**    | Mismo que :q                                                                                     |
-|     **`⎵w`**    | Mismo que :wq                                                                                    |
-|     **`⎵s`**    | Mismo que :w                                                                                     |
-|     **`s`**     | Reemplaza el caracter debajo del cursor o varios caracteres (en visual mode)                     |
-|     **`cc`**    | Reemplaza la linea y pone en modo Insertar                                                       |
-|     **`o`**     | Insertar una nueva linea DEBAJO y entrar en insertar                                             |
-|     **`O`**     | Mismo que ‘o’ pero Arriba                                                                        |
-|     **`*`**     | Búsqueda rápida de la palabra que está debajo del cursor                                         |
-|     **`#`**     | Lo mismo que `*` pero al revés                                                                   |
-|     **`gf`**    | Abre el archivo sobre el que el cursor esta posicionado                                          |
-|     **`gF`**    | Lo mismo que ‘gf’ pero abriéndolo en una cierta linea especificada (Ej: “archivo.c:75”)          |
-|     **`gx`**    | Abrir con xdg-open (por ejemplo un link)                                                         |
-|     **`.`**     | Rehace la ultima acción. Por ejemplo: ejecutando «ci" hola», para repetirlo, presiona « . »      |
-| **`"[Letra]y`** | Copia un texto dentro de una tecla (registro)                                                    |
-| **`"[Letra]p`** | Pega un texto que fue copiado dentro de una tecla (registro)                                     |
+|         Atajo        | Significado                                                                                      |
+|:--------------------:|--------------------------------------------------------------------------------------------------|
+|        **`i`**       | Entra en Insertar antes del cursor                                                               |
+|       **`ii`**       | Sale del modo Insertar                                                                           |
+|        **`I`**       | Entra en Insertar al Principio de la linea                                                       |
+|        **`a`**       | Entra en Insertar después del cursor                                                             |
+|        **`A`**       | Entra en Insertar al Final de la Linea                                                           |
+|        **`/`**       | Permite buscar texto. Con **`n`** y **`N`** va al siguiente y anterior resultado respectivamente |
+|        **`?`**       | Lo mismo que **`/`** pero con en sentido contrario                                               |
+|       **`yy`**       | Copia una Linea                                                                                  |
+|       **`dd`**       | Elimina (Corta) una Linea                                                                        |
+|        **`p`**       | Pega el contenido abajo o a la derecha del cursor                                                |
+|        **`P`**       | Como ‘p’ pero en la linea de arriba o antes del cursor                                           |
+|       **`⎵p`**       | En visual mode, pega lo que se copio, sin que sea reemplazado por lo que se eliminó              |
+|        **`u`**       | Deshacer                                                                                         |
+|    **`[Ctrl] r`**    | Rehacer                                                                                          |
+|        **`v`**       | Modo Visual                                                                                      |
+|        **`V`**       | Modo Visual Line                                                                                 |
+|    **`[Ctrl] v`**    | Modo Visual Block                                                                                |
+|        **`R`**       | Modo Reemplazo                                                                                   |
+|       **`gv`**       | Vuelve al ultimo texto seleccionado en Visual Mode                                               |
+|       **`gi`**       | Vuelve al ultima linea en la que estuvo con modo Insert                                          |
+|       **`⎵h`**       | Dividir Horizontalmente                                                                          |
+|       **`⎵v`**       | Dividir Verticalmente                                                                            |
+|       **`⎵q`**       | Mismo que :q                                                                                     |
+|       **`⎵w`**       | Mismo que :wq                                                                                    |
+|       **`⎵s`**       | Mismo que :w                                                                                     |
+|        **`s`**       | Reemplaza el caracter debajo del cursor o varios caracteres (en visual mode)                     |
+|       **`cc`**       | Reemplaza la linea y pone en modo Insertar                                                       |
+|        **`o`**       | Insertar una nueva linea DEBAJO y entrar en insertar                                             |
+|        **`O`**       | Mismo que ‘o’ pero Arriba                                                                        |
+|        **`*`**       | Búsqueda rápida de la palabra que está debajo del cursor                                         |
+|        **`#`**       | Lo mismo que `*` pero al revés                                                                   |
+|       **`gf`**       | Abre el archivo sobre el que el cursor esta posicionado                                          |
+|       **`gF`**       | Lo mismo que ‘gf’ pero abriéndolo en una cierta linea especificada (Ej: “archivo.c:75”)          |
+|       **`gx`**       | Abrir con xdg-open (por ejemplo un link)                                                         |
+|        **`.`**       | Rehace la ultima acción. Por ejemplo: ejecutando «ci" hola», para repetirlo, presiona « . »      |
+|    **`"[Letra]y`**   | Copia un texto dentro de una tecla (registro)                                                    |
+|    **`"[Letra]p`**   | Pega un texto que fue copiado dentro de una tecla (registro)                                     |
+| **`[Shift][Enter]`** | Creates a new line above the cursor (in insert mode)                                             |
+|  **`[Ctrl][Enter]`** | Creates a new line below the cursor (in insert mode)                                             |
 
 ### No tan básicos
 

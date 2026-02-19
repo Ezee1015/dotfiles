@@ -23,6 +23,8 @@ return {
           statusline = 500,
         },
         disabled_filetypes = {"startify"},
+        -- theme = 'auto'
+        theme = 'gruvbox-material'
       },
       sections = {
         lualine_x = {{ searchCount }, 'fileformat', 'filetype'},

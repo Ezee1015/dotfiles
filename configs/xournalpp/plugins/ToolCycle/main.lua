@@ -73,7 +73,7 @@ function initUi()
 
   -- setColorShortcuts();
 
-  setDefaults()
+  -- setDefaults() -- TODO: Uncomment this line when the segfault is fixed
 end
 
 function gridsnap()

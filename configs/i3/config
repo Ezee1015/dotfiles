@@ -63,7 +63,8 @@ bindsym $mod+m exec BLOCK_BUTTON=1 ~/.config/i3/scripts/i3block_mic_volume.sh
 bindsym $mod+d exec $path_with_scripts rofi -show "run"
 bindsym $mod+Shift+d exec rofi -show "drun"
 # bindsym $mod+Shift+f exec rofi -show "filebrowser"
-bindsym $mod+Mod2+KP_Subtract exec "LC_NUMERIC=en_US.UTF8 rofi -show calc -theme-str \\"listview {enabled: false;}\\" -calc-command \\"echo '{result}' | tr -d '\n' | xclip -selection clipboard\\" -no-history"
+bindsym $mod+Mod2+KP_Subtract exec "LC_NUMERIC=en_US.UTF8 rofi -show calc -theme-str \\"listview {enabled: false;}\\" -calc-command \\"echo '{result}' | tr -d '\n' | xclip -selection clipboard\\" -no-history -automatic-save-to-history"
+bindsym $mod+Mod2+Shift+KP_Subtract exec --no-startup-id LC_NUMERIC=en_US.UTF8 ~/.config/i3/scripts/rofi-calc-history.sh
 bindsym $mod+minus exec rofi -show calc -calc-command "echo '{result}' | tr -d '\n' | xclip -selection clipboard"
 bindsym $mod+o exec --no-startup-id PATH="$PATH:$HOME/.config/i3/rofi-sound" rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"
 bindsym $mod+Shift+s exec --no-startup-id rofi -show find -modi find:~/.local/share/rofi/finder.sh

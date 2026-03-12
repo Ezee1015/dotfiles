@@ -160,6 +160,21 @@ return {
     ---@module 'render-markdown'
     config = function()
       require('render-markdown').setup({
+        checkbox = {
+          -- Define custom checkbox states, more involved, not part of the markdown grammar.
+          -- As a result this requires neovim >= 0.10.0 since it relies on 'inline' extmarks.
+          -- The key is for healthcheck and to allow users to change its values, value type below.
+          -- | raw             | matched against the raw text of a 'shortcut_link'           |
+          -- | rendered        | replaces the 'raw' value when rendering                     |
+          -- | highlight       | highlight for the 'rendered' icon                           |
+          -- | scope_highlight | optional highlight for item associated with custom checkbox |
+          -- stylua: ignore
+          custom = {
+              todo = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+                     { raw = '[~]', rendered = '󰩹 ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+                     { raw = '[?]', rendered = '? ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+          },
+        },
         heading = {
           -- Useful context to have when evaluating values.
           -- | level    | the number of '#' in the heading marker         |

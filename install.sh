@@ -132,7 +132,7 @@ install_i3() {
   if [[ -d "i3lock" ]] ; then
     cd i3lock && git pull
   else
-    sudo apt install libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-x11-dev libev-dev libpam-dev -y
+    sudo apt install libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-x11-dev libev-dev libpam-dev meson -y
     git clone https://github.com/Ezee1015/i3lock
     cd i3lock
   fi

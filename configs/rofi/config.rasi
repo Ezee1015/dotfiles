@@ -4,7 +4,7 @@
 @import "themes/gruvbox.rasi"
 
 configuration {
-  modi: "run,drun,calc,filebrowser,window";
+  modi: "run,drun,calc,filebrowser,window,keys";
 
   kb-row-up:                      "Up,Control+k,Shift+Tab";
   kb-row-down:                    "Down,Control+j";

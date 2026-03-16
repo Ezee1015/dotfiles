@@ -61,7 +61,7 @@ local function lspconfig_config()
   })
 
   -- Lua-Language-Server
-  vim.lsp.config("lua_lsp", {
+  vim.lsp.config("lua_ls", {
     settings = {
       Lua = {
         runtime = {

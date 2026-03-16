@@ -11,9 +11,9 @@ function IsDir(file)
   end
   return true
 end
--- Function to verify a file exists
-function IsFile(file)
-   local f=io.open(file,"r")
+-- Taken from: <https://stackoverflow.com/a/4991602>
+function FileExists(name)
+   local f=io.open(name,"r")
    if f~=nil then io.close(f) return true else return false end
 end
 
@@ -31,5 +31,7 @@ require("lazy_init")
 require("floaterm")
 -- lua/marklink.lua
 require("marklink")
+-- lua/idea.lua
+require("idea")
 -- lua/numbertoggle.lua
 require("numbertoggle")

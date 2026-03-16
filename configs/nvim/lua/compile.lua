@@ -25,7 +25,7 @@ local Compile = {
     end,
 
     ['java'] = function()
-        if(IsFile("build.xml")) then
+        if(FileExists("build.xml")) then
           exe("ant compile")
         else
           exe("javac '%'")
@@ -73,7 +73,7 @@ local CompileAndRun = {
     end,
 
     ['java'] = function()
-        if(IsFile("build.xml")) then
+        if(FileExists("build.xml")) then
           exe("ant run",1)
         else
           Procesar("compilar", 1)
@@ -124,7 +124,7 @@ function Procesar (tipo, guardar)
     vim.cmd "w"
   end
 
-  if IsFile("Makefile") and vim.bo.filetype ~= "markdown" then
+  if FileExists("Makefile") and vim.bo.filetype ~= "markdown" then
     exe("make", 1)
 
     -- if tipo == "ejecutar" then

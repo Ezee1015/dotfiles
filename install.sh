@@ -222,7 +222,7 @@ install_ranger() {
 install_mpv() {
   if ! command -v mpv &> /dev/null; then
     echo "- Installing mpv..."
-    sudo apt install mpv
+    sudo apt install mpv mpv-mpris
   fi
 
   echo "- Linking configuration..."

@@ -12,6 +12,9 @@ set fillchars+=vert:█ " Change \| to █ in the vertical split
 setlocal spell! spelllang=es_es,en_us
 set completeopt=menu,menuone,noinsert,noselect
 
+" To fix: Advertencia: No se pudo hallar la lista de palabras "es.utf-8.spl" o "es.ascii.spl"
+" Run vim and press ':set spell'
+
 filetype on
 filetype plugin on
 filetype indent on " file type based indentation

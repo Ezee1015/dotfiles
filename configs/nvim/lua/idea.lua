@@ -7,7 +7,7 @@ local function getEmbededImage(filePath)
     filePath = vim.fn.expand(filePath)
 
     if not FileExists(filePath) then
-        error("File `" .. filePath .. "`does not exists!")
+        error("File `" .. filePath .. "` does not exists!")
     end
 
     local command = "convert '" .. filePath .. "' -strip PNG:- | base64 | tr -d '\n'"
@@ -20,13 +20,8 @@ local function getEmbededImage(filePath)
     return true, result
 end
 
-local function insertEmbeddedImage(line, pos, filePath)
-  local ok, embededImg = getEmbededImage(filePath)
-  if not ok then
-      error("Unable to get the embedded image")
-  end
-
-  local insert = '<img src="data:image/png;base64,' .. embededImg .. '">'
+local function insertEmbeddedImage(line, pos, embeddedImage)
+  local insert = '<img src="data:image/png;base64,' .. embeddedImage .. '">'
   local nline = line:sub(0, pos) .. insert  .. line:sub(pos+1)
   local ok, err = pcall(vim.api.nvim_set_current_line, nline)
   if not ok then
@@ -72,19 +67,49 @@ local function convertImageIntoEmbedded()
   local filePath = line:sub(startPathPos+1, endPos-1)
   line = line:sub(0, startPos-1) .. line:sub(endPos+1)
 
-  insertEmbeddedImage(line, startPos-1, filePath)
+  local ok, embeddedImage = getEmbededImage(filePath)
+  if not ok then
+      error("Unable to get the embedded image")
+  end
+
+  insertEmbeddedImage(line, startPos-1, embeddedImage)
 end
 
-local function pasteEmbeddedImage()
+local function pasteEmbeddedImageFromClipboardPath()
   local cursor = vim.api.nvim_win_get_cursor(0)
   local line = vim.api.nvim_get_current_line()
   local filePath = vim.fn.getreg("+"):gsub("\n", "");
 
-  insertEmbeddedImage(line, cursor[2], filePath)
+  local ok, embeddedImage = getEmbededImage(filePath)
+  if not ok then
+      error("Unable to get the embedded image")
+  end
+
+  insertEmbeddedImage(line, cursor[2], embeddedImage)
 end
+
+local function pasteEmbeddedImageFromClipboardImage()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local line = vim.api.nvim_get_current_line()
+
+  local getImageFromClipboardCmd = "xclip -o -sel clipboard" -- X11
+  local command = getImageFromClipboardCmd .. " | convert -strip PNG:- - | base64 | tr -d '\n'"
+  local result = vim.fn.system(command):gsub("\n", "")
+
+  if vim.v.shell_error ~= 0 then
+      error("Command `" .. command .. "` failed with exit code " .. vim.v.shell_error)
+  end
+
+  insertEmbeddedImage(line, cursor[2], result)
+  return true, result
+end
+
 
 vim.api.nvim_create_user_command("IdeaConvertImageIntoEmbedded", convertImageIntoEmbedded, {})
 vim.keymap.set("n" , "<leader>ic", convertImageIntoEmbedded);
 
-vim.api.nvim_create_user_command("IdeaPasteEmbeddedImage", pasteEmbeddedImage, {})
-vim.keymap.set("n" , "<leader>ip", pasteEmbeddedImage);
+vim.api.nvim_create_user_command("IdeaPasteEmbeddedImageFromClipboardPath", pasteEmbeddedImageFromClipboardPath, {})
+vim.keymap.set("n" , "<leader>ip", pasteEmbeddedImageFromClipboardPath);
+
+vim.api.nvim_create_user_command("IdeaPasteEmbeddedImageFromClipboardImage", pasteEmbeddedImageFromClipboardImage, {})
+vim.keymap.set("n" , "<leader>ii", pasteEmbeddedImageFromClipboardImage);

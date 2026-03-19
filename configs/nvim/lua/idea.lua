@@ -1,4 +1,3 @@
-
 local function getEmbededImage(filePath)
     if filePath == nil then
         return false, ""
@@ -29,7 +28,7 @@ local function insertEmbeddedImage(line, pos, embeddedImage)
   end
 end
 
-local function searchBackwards(text, startPos, char)
+local function searchCharBackwards(text, startPos, char)
   while startPos >= 0 and text:sub(startPos,startPos) ~= char do
       startPos = startPos - 1
   end
@@ -37,7 +36,7 @@ local function searchBackwards(text, startPos, char)
   return (startPos ~= -1) and true or false, startPos
 end
 
-local function searchForward(text, startPos, char)
+local function searchCharForwards(text, startPos, char)
   while startPos < string.len(text) and text:sub(startPos,startPos) ~= char do
       startPos = startPos + 1
   end
@@ -49,17 +48,17 @@ local function convertImageIntoEmbedded()
   local cursor = vim.api.nvim_win_get_cursor(0)
   local line = vim.api.nvim_get_current_line()
 
-  local ok, startPos = searchBackwards(line, cursor[2], '!')
+  local ok, startPos = searchCharBackwards(line, cursor[2], '!')
   if not ok then
       error("Unable to find the start of the image")
   end
 
-  local ok, endPos = searchForward(line, cursor[2], ')')
+  local ok, endPos = searchCharForwards(line, cursor[2], ')')
   if not ok then
       error("Unable to find the end of the image")
   end
 
-  local ok, startPathPos = searchBackwards(line, endPos, '(')
+  local ok, startPathPos = searchCharBackwards(line, endPos, '(')
   if not ok then
       error("Unable to find the start of the image path")
   end
@@ -104,12 +103,21 @@ local function pasteEmbeddedImageFromClipboardImage()
   return true, result
 end
 
+-------------------------
+-- MAPS
+-------------------------
 
-vim.api.nvim_create_user_command("IdeaConvertImageIntoEmbedded", convertImageIntoEmbedded, {})
-vim.keymap.set("n" , "<leader>ic", convertImageIntoEmbedded);
+-- For notes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "html" },
+  callback = function(event)
+    vim.api.nvim_buf_create_user_command(event.buf, "IdeaConvertImageIntoEmbedded", convertImageIntoEmbedded, {})
+    vim.keymap.set("n" , "<leader>ic", convertImageIntoEmbedded, { buffer = event.buf });
 
-vim.api.nvim_create_user_command("IdeaPasteEmbeddedImageFromClipboardPath", pasteEmbeddedImageFromClipboardPath, {})
-vim.keymap.set("n" , "<leader>ip", pasteEmbeddedImageFromClipboardPath);
+    vim.api.nvim_buf_create_user_command(event.buf, "IdeaPasteEmbeddedImageFromClipboardPath", pasteEmbeddedImageFromClipboardPath, {})
+    vim.keymap.set("n" , "<leader>ip", pasteEmbeddedImageFromClipboardPath, { buffer = event.buf });
 
-vim.api.nvim_create_user_command("IdeaPasteEmbeddedImageFromClipboardImage", pasteEmbeddedImageFromClipboardImage, {})
-vim.keymap.set("n" , "<leader>ii", pasteEmbeddedImageFromClipboardImage);
+    vim.api.nvim_buf_create_user_command(event.buf, "IdeaPasteEmbeddedImageFromClipboardImage", pasteEmbeddedImageFromClipboardImage, {})
+    vim.keymap.set("n" , "<leader>ii", pasteEmbeddedImageFromClipboardImage, { buffer = event.buf });
+  end,
+})

@@ -261,6 +261,7 @@ exec --no-startup-id playerctld daemon
 exec xfce4-clipman
 exec kdeconnect-indicator
 exec conky -c ~/.config/conky/conky.conf
+exec_always ~/github/My_Scripts/sh/idea_notify_today_reminders.sh tag utn
 # Others
 exec_always --no-startup-id ~/.config/i3/sounds/login.sh
 

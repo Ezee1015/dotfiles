@@ -10,7 +10,7 @@ set $smod Mod4
 font pango:hackNerdFont 9
 
 title_align center
-gaps inner 10px
+gaps inner 5px
 gaps outer 0px
 # Enable gaps when there's more than one window on the workspace
 smart_gaps on

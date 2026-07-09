@@ -6,13 +6,13 @@ vim.g.VM_leader = 'ç'
 
 return {
 	-- Saltar entre palabras
-  {"phaazon/hop.nvim",
-    config = true,
-    keys = {
-      {'<leader>f', '<cmd>HopChar2<CR>', desc="Buscar palabras por 2 caracteres" },
-      {'<leader>F', '<cmd>HopWord<CR>' , desc="Buscar palabras"                  },
-    }
-  },
+  -- {"phaazon/hop.nvim",
+  --   config = true,
+  --   keys = {
+  --     {'<leader>f', '<cmd>HopChar2<CR>', desc="Buscar palabras por 2 caracteres" },
+  --     {'<leader>F', '<cmd>HopWord<CR>' , desc="Buscar palabras"                  },
+  --   }
+  -- },
 
   -- Multiple cursors
   "mg979/vim-visual-multi",

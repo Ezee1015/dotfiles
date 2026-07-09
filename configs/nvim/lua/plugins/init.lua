@@ -18,7 +18,7 @@ return {
   "mg979/vim-visual-multi",
 
   -- Colorizado de códigos hexadecimales y de etiquetas rgb()
-  {"norcalli/nvim-colorizer.lua",
+  {"catgoose/nvim-colorizer.lua",
     opts = {
       '*' -- Execute for all filetypes. See docs --> :h colorizer.lua
     },

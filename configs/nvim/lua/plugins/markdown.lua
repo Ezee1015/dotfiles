@@ -159,6 +159,14 @@ return {
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     ---@module 'render-markdown'
     config = function()
+      vim.api.nvim_set_hl(0, 'RenderMarkdownH1Bg', { fg = '#e90101', bg = '#402626', italic = false })
+      vim.api.nvim_set_hl(0, 'RenderMarkdownH2Bg', { fg = '#007df2', bg = '#2e486a', italic = false })
+      vim.api.nvim_set_hl(0, 'RenderMarkdownH3Bg', { fg = '#15aabf', bg = '#35545f', italic = true })
+      vim.api.nvim_set_hl(0, 'RenderMarkdownH4Bg', { fg = '#1dc13e', bg = '#264026', italic = true })
+      vim.api.nvim_set_hl(0, 'RenderMarkdownH5Bg', { fg = '#d96e0f', bg = '#403526', italic = true })
+      vim.api.nvim_set_hl(0, 'RenderMarkdownH6Bg', { fg = '#f59f00', bg = '#403d26', italic = true })
+      vim.api.nvim_set_hl(0, 'RenderMarkdownBullet', { fg = '#ffd43b', italic = false })
+
       require('render-markdown').setup({
         checkbox = {
           -- Define custom checkbox states, more involved, not part of the markdown grammar.
@@ -169,11 +177,18 @@ return {
           -- | highlight       | highlight for the 'rendered' icon                           |
           -- | scope_highlight | optional highlight for item associated with custom checkbox |
           -- stylua: ignore
-          custom = {
-              todo = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
-                     { raw = '[~]', rendered = '󰩹 ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
-                     { raw = '[?]', rendered = '? ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+          checked = {
+              highlight = "RenderMarkdownH4Bg"
           },
+          custom = {
+              todo = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownH6Bg', scope_highlight = nil },
+                     { raw = '[~]', rendered = '󰩹 ', highlight = 'RenderMarkdownH1Bg', scope_highlight = nil },
+                     { raw = '[?]', rendered = '? ', highlight = 'RenderMarkdownH2Bg', scope_highlight = nil },
+          },
+        },
+        bullet = {
+            icons = { '•', '◦', '‣', '▹' },
+            highlight = 'RenderMarkdownBullet',
         },
         heading = {
           -- Useful context to have when evaluating values.
@@ -314,13 +329,6 @@ return {
           filler = 'RenderMarkdownTableFill',
         },
       })
-
-      vim.api.nvim_set_hl(0, 'RenderMarkdownH1Bg', { fg = '#e90101', bg = '#402626', italic = false })
-      vim.api.nvim_set_hl(0, 'RenderMarkdownH2Bg', { fg = '#007df2', bg = '#2e486a', italic = false })
-      vim.api.nvim_set_hl(0, 'RenderMarkdownH3Bg', { fg = '#15aabf', bg = '#35545f', italic = true })
-      vim.api.nvim_set_hl(0, 'RenderMarkdownH4Bg', { fg = '#1dc13e', bg = '#264026', italic = true })
-      vim.api.nvim_set_hl(0, 'RenderMarkdownH5Bg', { fg = '#d96e0f', bg = '#403526', italic = true })
-      vim.api.nvim_set_hl(0, 'RenderMarkdownH6Bg', { fg = '#f59f00', bg = '#403d26', italic = true })
 
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('Highlighter', {}),

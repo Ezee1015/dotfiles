@@ -44,8 +44,9 @@ set statusbar-fg                "#ebdbb2"
 
 set highlight-fg                "#ffffff" # Ex.: When selecting a link
 
-set highlight-color             "#076678"
-set highlight-active-color      "#8ec07c"
+# In Debian 13 Zathura the fg color doesn't work if this is specified
+# set highlight-color             "#076678"
+# set highlight-active-color      "#8ec07c"
 
 set default-fg                  "#ebdbb2"
 set default-bg                  "#1d2021" # Background of the app

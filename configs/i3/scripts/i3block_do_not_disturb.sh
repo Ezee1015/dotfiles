@@ -8,6 +8,7 @@ if [[ ! -z $BLOCK_BUTTON ]]; then
   pkill ffplay
   refresh_mute_block
   notification_sound
+  refresh_playing_block
   exit 0
 fi
 

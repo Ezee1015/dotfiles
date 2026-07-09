@@ -242,10 +242,10 @@ bindsym $smod+r exec pkill picom && sleep 0.5 && picom --daemon
 ######################################################
 
 # Scripts
+exec --no-startup-id ~/apps/autorun.sh
 exec_always ~/.config/i3/scripts/wallpaper.sh
 exec ~/.config/i3/scripts/toggle_caps_lock_control.sh
 exec --no-startup-id ~/.config/i3/scripts/playing_daemon_i3block.sh
-exec --no-startup-id ~/apps/autorun.sh
 # Services
 # KDE authentication dialog
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1

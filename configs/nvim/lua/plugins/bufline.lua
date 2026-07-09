@@ -35,6 +35,8 @@ return {
       { '<TAB>'         , ':BufferLineCycleNext<CR>'        , desc="Siguiente buffer" },
       { '<S-TAB>'       , ':BufferLineCyclePrev<CR>'        , desc="Anterior buffer" },
       { '<S-t>'         , ':enew<CR>:NvimTreeToggle<CR>'    , desc="Nuevo buffer" },
+      { '<leader>bl'    , ':BufferLineMoveNext<CR>'       , desc="Mover buffer a la derecha" },
+      { '<leader>bh'    , ':BufferLineMovePrev<CR>'       , desc="Mover buffer a la izquierda" },
       { '<leader>b<Right>', ':BufferLineMoveNext<CR>'       , desc="Mover buffer a la derecha" },
       { '<leader>b<Left>' , ':BufferLineMovePrev<CR>'       , desc="Mover buffer a la izquierda" },
       { '<leader>be'    , ':BufferLineSortByExtension<CR>'  , desc="Ordenar buffers por extención" },

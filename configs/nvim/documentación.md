@@ -509,7 +509,7 @@ En un texto separado por comas, se selecciona, se presiona ⎵tt y lo ordena en 
 |   Atajo   | Significado                                                           |
 |:---------:|-----------------------------------------------------------------------|
 |  **`⎵z`** | Muestra la lista del autocorregtor (z=)                               |
-|  **`⎵b`** | Buscador entre buffers abiertos                                       |
+| **`⎵bb`** | Buscador entre buffers abiertos                                       |
 | **`⎵ds`** | Buscador de Archivos Recursivos                                       |
 | **`⎵dg`** | Buscador de Archivos Recursivos pero con ripgrep                      |
 | **`⎵de`** | Muestra un explorador de archivos                                     |

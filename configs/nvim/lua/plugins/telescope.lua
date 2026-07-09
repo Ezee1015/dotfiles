@@ -162,7 +162,7 @@ return {
       -- { 'gd'        , "<cmd>lua require('telescope.builtin').lsp_definitions(Telescope_theme)<cr>", desc="Ir a la definición" },
       -- { 'gr'        , "<cmd>lua require('telescope.builtin').lsp_references(Telescope_theme)<cr>" , desc="Ir a las referencias" },
       { '<leader>z' , "<cmd>lua require('telescope.builtin').spell_suggest(Telescope_theme)<cr>"  , desc="Corrector ortográfico" },
-      { '<leader>b' , "<cmd>lua require('telescope.builtin').buffers(Telescope_theme)<cr>"        , desc="Lista buffers" },
+      { '<leader>bb' , "<cmd>lua require('telescope.builtin').buffers(Telescope_theme)<cr>"        , desc="Lista buffers" },
       { '<leader>dd', "<cmd>lua require('telescope.builtin').diagnostics(Telescope_theme)<cr>"    , desc="Diagnósticos LSP" },
       { '<leader>d<S-f>', "<cmd>lua vim.lsp.buf.code_action(Telescope_theme)<CR>"                 , desc="See available fixes" },
       { '<leader>dh', "<cmd>lua require('telescope.builtin').help_tags(Telescope_theme)<cr>"      , desc="Ayuda neovim" },
